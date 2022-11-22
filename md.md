@@ -1,0 +1,17 @@
+setup:
+-Tailwind x
+-ant/design x
+-styled-component x
+-lodash x
+-scss/sass x
+-prop-types x
+-yup x
+-react-hook-form x
+-formik x
+-firebase x
+-react-error-boundary x
+-react-route-dom x
+-react-toastify x
+-uuid x
+-web-vitals x
+-sweetalert2 x
