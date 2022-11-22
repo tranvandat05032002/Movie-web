@@ -7,14 +7,17 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./utils/const";
 import { ToastContainer } from "react-toastify";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles></GlobalStyles>
-      <App />
-      <ToastContainer></ToastContainer>
+      <BrowserRouter>
+        <App />
+        <ToastContainer></ToastContainer>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
 );
