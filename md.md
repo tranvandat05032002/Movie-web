@@ -7,6 +7,7 @@ setup:
 -prop-types x
 -yup x
 -react-hook-form x
+-npm i @hookform/resolvers x
 -formik x
 -firebase x
 -react-error-boundary x
@@ -15,3 +16,16 @@ setup:
 -uuid x
 -web-vitals x
 -sweetalert2 x
+-fontawesome
+
+Register:
+-fullName
+-user: slugify(fullName)
+-email
+-password
+-photoURl
+-avatar
+-register
+-login more
+-createAt
+-status: 1 : I accept the Terms and Conditions
