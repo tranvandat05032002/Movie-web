@@ -2,24 +2,24 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Field, Form, FormNav, Input, Label } from "../component";
+import {
+  Button,
+  Field,
+  Form,
+  FormNav,
+  Input,
+  InputPassword,
+  Label,
+} from "../component";
 import AuthenticationPage from "./AuthenticationPage";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth, db } from "../firebase-app/firebase-config";
-import {
-  addDoc,
-  collection,
-  doc,
-  serverTimestamp,
-  setDoc,
-} from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import slugify from "slugify";
-import InputPassword from "../component/input/InputPassword";
 
 const SignUp = () => {
-  const notify = () => toast("Wow so easy!");
   const validateScheme = yup.object({
     fullName: yup
       .string()
@@ -41,12 +41,12 @@ const SignUp = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { isValid, isSubmitting, errors },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(validateScheme),
   });
-  console.log("🚀 ~ file: SignUp.js ~ line 48 ~ SignUp ~ errors", errors);
   const handleCreateUser = async (values) => {
     if (!isValid) return;
     try {
@@ -69,20 +69,32 @@ const SignUp = () => {
         status: 1,
         email: values.email,
         password: values.password,
-        userName: slugify(values.fullName, { lower: true }),
+        userName: slugify(values.fullName, {
+          lower: true,
+          replacement: " ",
+          trim: true,
+        }),
       });
-      toast.success("Register successFully");
+      toast.success("Register successFully", {
+        pauseOnHover: true,
+      });
+      reset({
+        fullName: "",
+        email: "",
+        password: "",
+      });
       setTimeout(() => {
-        navigate("/sign-in");
-      }, 5000);
+        navigate("/");
+      }, 1000);
     } catch (error) {
-      toast.success(error.message);
+      toast.error(error.message, {
+        pauseOnHover: true,
+      });
     }
   };
   //show toast error of react-hook-form
   React.useEffect(() => {
     const arrayErrors = Object.values(errors);
-    console.log(arrayErrors[0]);
     if (arrayErrors.length > 0) {
       toast.error(arrayErrors[0]?.message, {
         pauseOnHover: false,

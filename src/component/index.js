@@ -6,4 +6,15 @@ import Button from "./button/Button";
 import Checkbox from "./checkbox/Checkbox";
 import FormNav from "./navlink/FormNav";
 import LoadingSniper from "./loading/LoadingSniper";
-export { Input, Label, Field, Form, Button, Checkbox, FormNav, LoadingSniper };
+import InputPassword from "./input/InputPassword";
+export {
+  Input,
+  Label,
+  Field,
+  Form,
+  Button,
+  Checkbox,
+  FormNav,
+  LoadingSniper,
+  InputPassword,
+};
