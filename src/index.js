@@ -8,10 +8,12 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./utils/const";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
+// note: when use toast
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <React.Fragment>
     <ThemeProvider theme={theme}>
       <GlobalStyles></GlobalStyles>
       <BrowserRouter>
@@ -19,7 +21,7 @@ root.render(
         <ToastContainer></ToastContainer>
       </BrowserRouter>
     </ThemeProvider>
-  </React.StrictMode>
+  </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

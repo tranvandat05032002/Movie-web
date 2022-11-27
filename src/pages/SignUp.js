@@ -4,18 +4,100 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Field, Form, FormNav, Input, Label } from "../component";
 import AuthenticationPage from "./AuthenticationPage";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
+import { auth, db } from "../firebase-app/firebase-config";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
+import slugify from "slugify";
+import InputPassword from "../component/input/InputPassword";
 
 const SignUp = () => {
-  const validationSchema = yup.object({});
-  const { control } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(validationSchema),
+  const notify = () => toast("Wow so easy!");
+  const validateScheme = yup.object({
+    fullName: yup
+      .string()
+      .required("Please enter a your fullName")
+      .min(6, "must have at least 6 characters"),
+    email: yup
+      .string()
+      .required("Please enter your email address")
+      .email("Please enter valid email address"),
+    password: yup
+      .string()
+      .required("Please enter your password")
+      .min(8, "Your password must be at least 8 character or greater"),
   });
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    document.title = "Register";
+  }, []);
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, isSubmitting, errors },
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(validateScheme),
+  });
+  console.log("🚀 ~ file: SignUp.js ~ line 48 ~ SignUp ~ errors", errors);
+  const handleCreateUser = async (values) => {
+    if (!isValid) return;
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      await updateProfile(auth.currentUser, {
+        displayName: values.fullName,
+        photoURL:
+          "https://luv.vn/wp-content/uploads/2022/06/gai-xinh-cap-3-luv-17.jpg",
+      });
+      //Note: was wrong here
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        fullName: values.fullName,
+        avatar:
+          "https://luv.vn/wp-content/uploads/2022/06/gai-xinh-cap-3-luv-17.jpg",
+        createAt: serverTimestamp(),
+        status: 1,
+        email: values.email,
+        password: values.password,
+        userName: slugify(values.fullName, { lower: true }),
+      });
+      toast.success("Register successFully");
+      setTimeout(() => {
+        navigate("/sign-in");
+      }, 5000);
+    } catch (error) {
+      toast.success(error.message);
+    }
+  };
+  //show toast error of react-hook-form
+  React.useEffect(() => {
+    const arrayErrors = Object.values(errors);
+    console.log(arrayErrors[0]);
+    if (arrayErrors.length > 0) {
+      toast.error(arrayErrors[0]?.message, {
+        pauseOnHover: false,
+        delay: 0,
+      });
+    }
+  }, [errors]);
   return (
     <AuthenticationPage>
       <Form heading="Register">
-        <form action="">
+        <form
+          autoComplete="off"
+          className="form"
+          onSubmit={handleSubmit(handleCreateUser)}
+        >
           <Field>
             <Label htmlFor={"fullName"}>Full name</Label>
             <Input
@@ -28,21 +110,23 @@ const SignUp = () => {
             <Label htmlFor={"email"}>email</Label>
             <Input
               type="email"
-              name="email"
-              placeholder="youremail@gmail.com"
+              name={"email"}
+              placeholder="Youremail@gmail.com"
               control={control}
             ></Input>
           </Field>
           <Field>
             <Label htmlFor={"password"}>Password</Label>
-            <Input
-              type="password"
-              placeholder="Password"
-              name="password"
-              control={control}
-            />
+            <InputPassword control={control}></InputPassword>
           </Field>
-          <Button kind="buttonPrimary">Create an account</Button>
+          <Button
+            kind="buttonPrimary"
+            type="submit"
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+          >
+            Create an account
+          </Button>
           <FormNav kind={"register"}>Login?</FormNav>
         </form>
       </Form>
