@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         hightLight: "#66b3ff",
         bluef1: "#1878f3",
+        borderLineBlue: "#81cff5",
       },
     },
   },

@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../context/auth-context";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-app/firebase-config";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
   const validateScheme = yup.object({
@@ -58,7 +59,17 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       navigate("/");
       setTimeout(() => {
-        toast.success(`Welcome ${userInfo?.displayName.replace(/\s/g, "")}!`);
+        // toast.success(`Welcome ${userInfo?.displayName.replace(/\s/g, "")}!`);
+        Swal.fire({
+          position: "top-between",
+          icon: "success",
+          title: `Welcome ${userInfo?.displayName
+            .toLowerCase()
+            .replace(/(^|\s)\S/g, (l) => l.toUpperCase())}! 
+          Your work has been saved`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }, 500);
     } catch (error) {
       toast.error(error.message);

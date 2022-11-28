@@ -19,7 +19,18 @@ const ButtonStyles = styled.button`
         border: 1px dashed ${(prop) => prop.theme.borderLine};
       }
     `}
-  ${(prop) => prop.kind === "buttonSecondary" && css``}
+  ${(prop) =>
+    prop.kind === "buttonSecondary" &&
+    css`
+      border: 1px solid ${(prop) => prop.theme.borderLine};
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-weight: 500;
+
+      &:hover {
+        color: white;
+      }
+    `}
   ${(prop) =>
     prop.kind === "buttonFacebook" &&
     css`

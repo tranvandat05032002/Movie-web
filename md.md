@@ -17,6 +17,7 @@ setup:
 -web-vitals x
 -sweetalert2 x
 -fontawesome
+-@tippyjs/react
 
 Register:
 -fullName
