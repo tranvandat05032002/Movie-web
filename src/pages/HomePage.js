@@ -11,7 +11,9 @@ const HomePageStyles = styled.div`
 const HomePage = () => {
   return (
     <HomePageStyles>
-      <Layout>{/* <HomeBanner></HomeBanner> */}</Layout>
+      <Layout>
+        <HomeBanner></HomeBanner>
+      </Layout>
     </HomePageStyles>
   );
 };
