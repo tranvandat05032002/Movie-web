@@ -11,3 +11,81 @@ export const theme = {
   backgroundInput: "#384152",
   colorGoogleBlue: "#4188f6",
 };
+
+export const dataCategory = [
+  {
+    title: "Movies",
+    // menu: ["Popular", "Now Playing", "Upcoming", "Top Rated"],
+    menu: [
+      {
+        title: "Popular",
+        to: "/movie/popular",
+      },
+      {
+        title: "Now Playing",
+        to: "/movie/now-playing",
+      },
+      {
+        title: "Upcoming",
+        to: "/movie/upcoming",
+      },
+      {
+        title: "Top Rated",
+        to: "/movie/top-rated",
+      },
+    ],
+  },
+  {
+    title: "TV Shows",
+    // menu: ["Popular", "Airing Today", "On TV", "Top Rated"],
+    menu: [
+      {
+        title: "Popular",
+        to: "/tv/popular",
+      },
+      {
+        title: "Airing Today",
+        to: "/tv/airing-today",
+      },
+      {
+        title: "On TV",
+        to: "/tv/on-tv",
+      },
+      {
+        title: "Top Rated",
+        to: "/tv/top-rated",
+      },
+    ],
+  },
+  {
+    title: "People",
+    menu: [
+      {
+        title: "Popular People",
+        to: "/people",
+      },
+    ],
+  },
+];
+
+export const dataItem = [
+  {
+    title: "EN",
+    type: "English",
+    children: {
+      title: "Language Preferences",
+      data: [
+        {
+          type: "language",
+          code: "EN",
+          title: "English",
+        },
+        {
+          type: "language",
+          code: "VN",
+          title: "VietNam",
+        },
+      ],
+    },
+  },
+];

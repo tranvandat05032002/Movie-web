@@ -58,19 +58,19 @@ const SignIn = () => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       navigate("/");
-      setTimeout(() => {
-        // toast.success(`Welcome ${userInfo?.displayName.replace(/\s/g, "")}!`);
-        Swal.fire({
-          position: "top-between",
-          icon: "success",
-          title: `Welcome ${userInfo?.displayName
-            .toLowerCase()
-            .replace(/(^|\s)\S/g, (l) => l.toUpperCase())}! 
-          Your work has been saved`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }, 500);
+      // setTimeout(() => {
+      //   // toast.success(`Welcome ${userInfo?.displayName.replace(/\s/g, "")}!`);
+      //   Swal.fire({
+      //     position: "top-between",
+      //     icon: "success",
+      //     title: `Welcome ${userInfo?.displayName
+      //       .toLowerCase()
+      //       .replace(/(^|\s)\S/g, (l) => l.toUpperCase())}!
+      //     Your work has been saved`,
+      //     showConfirmButton: false,
+      //     timer: 1500,
+      //   });
+      // }, 500);
     } catch (error) {
       toast.error(error.message);
     }

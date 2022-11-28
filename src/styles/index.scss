@@ -37,3 +37,32 @@ body {
   width: 1px;
   white-space: nowrap;
 }
+//styles tippy
+.tippy-content {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 16px;
+}
+// .k-tooltip-content {
+//   height: 47px;
+// }
+#tippy-1 {
+  .tippy-content {
+    width: 241px;
+  }
+}
+.tippy-box[data-placement^="bottom"] > .tippy-arrow:before {
+  color: white;
+}
+
+#tippy-2 {
+  .tippy-content {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+.tool-tip {
+  padding: 5px 8px;
+}
