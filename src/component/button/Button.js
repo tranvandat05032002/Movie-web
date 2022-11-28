@@ -63,7 +63,7 @@ const Button = ({
   const { isLoading, Navigation } = props;
   const child = !!isLoading ? <LoadingSniper></LoadingSniper> : children;
   let ButtonElement = "div";
-  Navigation ? (ButtonElement = "navLink") : (ButtonElement = "div");
+  Navigation ? (ButtonElement = "NavLink") : (ButtonElement = "div");
   return (
     <div className="relative">
       {kind === "buttonFacebook" && (

@@ -84,7 +84,7 @@ const SignUp = () => {
         password: "",
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/sign-in");
       }, 1000);
     } catch (error) {
       toast.error(error.message, {

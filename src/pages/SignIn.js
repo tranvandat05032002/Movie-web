@@ -58,21 +58,14 @@ const SignIn = () => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       navigate("/");
-      // setTimeout(() => {
-      //   // toast.success(`Welcome ${userInfo?.displayName.replace(/\s/g, "")}!`);
-      //   Swal.fire({
-      //     position: "top-between",
-      //     icon: "success",
-      //     title: `Welcome ${userInfo?.displayName
-      //       .toLowerCase()
-      //       .replace(/(^|\s)\S/g, (l) => l.toUpperCase())}!
-      //     Your work has been saved`,
-      //     showConfirmButton: false,
-      //     timer: 1500,
-      //   });
-      // }, 500);
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
+      Swal.fire({
+        // title: "Your account or password is incorrect",
+        text: "Your account or password is incorrect, please re-enter",
+        icon: "error",
+        confirmButtonColor: "#3085d6",
+      });
     }
   };
   return (

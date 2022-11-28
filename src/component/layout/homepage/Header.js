@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../../../context/auth-context";
 import Button from "../../button/Button";
@@ -24,28 +24,41 @@ const HeaderStyles = styled.div`
 `;
 const Header = ({ hideOnClick = false }) => {
   const { userInfo } = useAuth();
-  console.log("🚀 ~ file: Header.js ~ line 27 ~ Header ~ userInfo", userInfo);
+  const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth);
+    navigate("/sign-in");
   };
-  // if (userInfo === "undefined") return;
-  // else {
-  if (userInfo && Object.keys(userInfo).length !== 0) {
-    setTimeout(() => {
-      Swal.fire({
-        position: "top-between",
-        icon: "success",
-        title: `Welcome ${
-          userInfo?.displayName
-            ? userInfo.displayName.toLowerCase()
-            : "".replace(/(^|\s)\S/g, (l) => l.toUpperCase())
-        }! 
-          Your work has been saved`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }, 500);
-  }
+  const handleSignIn = () => {
+    navigate("/sign-in");
+  };
+  const handleSignUp = () => {
+    navigate("/sign-up");
+  };
+  const handleJoin = async () => {
+    if (userInfo && Object.keys(userInfo).length !== 0) {
+      signOut(auth);
+      navigate("/sign-up");
+    }
+  };
+  React.useEffect(() => {
+    if (userInfo && Object.keys(userInfo).length !== 0) {
+      setTimeout(() => {
+        Swal.fire({
+          position: "top-between",
+          icon: "success",
+          title: `Welcome ${
+            userInfo?.displayName
+              ? userInfo.displayName.toLowerCase()
+              : "".replace(/(^|\s)\S/g, (l) => l.toUpperCase())
+          }! 
+            Your work has been saved`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }, 500);
+    }
+  }, []);
   // }
   return (
     <HeaderStyles>
@@ -81,11 +94,19 @@ const Header = ({ hideOnClick = false }) => {
             dataItem.map((item) => (
               <LanguageItem key={uuidv4()} item={item}></LanguageItem>
             ))}
-          <NavLink>join TMDB</NavLink>
+          <button onClick={handleJoin}>join TMDB</button>
           {!userInfo?.email ? (
             <>
-              <Button kind="buttonSecondary">Sign In</Button>
-              <Button kind="buttonSecondary">Sign Up</Button>
+              <Button
+                to="/sign-in"
+                kind="buttonSecondary"
+                onClick={handleSignIn}
+              >
+                Sign In
+              </Button>
+              <Button kind="buttonSecondary" onClick={handleSignUp}>
+                Sign Up
+              </Button>
             </>
           ) : (
             <>
