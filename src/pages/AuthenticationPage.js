@@ -7,6 +7,7 @@ const AuthenticationPageStyles = styled.div`
   align-items: center;
   flex-direction: column;
   color: ${(prop) => prop.theme.textTitle};
+  background-color: ${(prop) => prop.theme.bgPrimary};
 
   .container-form {
     max-width: 210px;

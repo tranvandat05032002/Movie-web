@@ -7,7 +7,7 @@ const ForgotPassword = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.bgPrimary};
   color: ${(prop) => prop.theme.textPrimary};
   .page-content {
     max-width: 1000px;

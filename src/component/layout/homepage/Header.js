@@ -16,6 +16,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase-app/firebase-config";
 import Swal from "sweetalert2";
 const HeaderStyles = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
   a {
     &:hover {
       color: white;
@@ -61,7 +64,7 @@ const Header = ({ hideOnClick = false }) => {
   }, []);
   // }
   return (
-    <HeaderStyles>
+    <HeaderStyles className="bg-bgPrimary">
       <div className="container flex items-center justify-between w-full p-[34px]  max-h-3">
         <div className="flex items-center justify-around  flex-nowrap max-w-[500px] w-[500px]">
           <NavLink to="/" className="w-[150px] h-[50px]">

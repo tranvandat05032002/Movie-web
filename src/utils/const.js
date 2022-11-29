@@ -10,8 +10,10 @@ export const theme = {
   bluef1: "#1878f3",
   backgroundInput: "#384152",
   colorGoogleBlue: "#4188f6",
+  bgPrimary: "#091929",
 };
 
+//Header component
 export const dataCategory = [
   {
     title: "Movies",
@@ -67,7 +69,7 @@ export const dataCategory = [
     ],
   },
 ];
-
+//Header component
 export const dataItem = [
   {
     title: "EN",

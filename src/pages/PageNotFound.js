@@ -6,8 +6,8 @@ const PageNotFoundStyles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${(prop) => prop.theme.bgPrimary};
   flex-direction: column;
-  background-color: ${(props) => props.theme.black};
   color: ${(prop) => prop.theme.textPrimary};
   .page-content {
     max-width: 1000px;

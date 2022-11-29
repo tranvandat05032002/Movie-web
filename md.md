@@ -18,6 +18,7 @@ setup:
 -sweetalert2 x
 -fontawesome
 -@tippyjs/react
+-pagination: swiper
 
 Register:
 -fullName

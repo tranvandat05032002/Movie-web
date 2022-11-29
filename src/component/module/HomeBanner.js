@@ -24,6 +24,10 @@ const ButtonStyles = styled.button`
   height: 46px;
   border-radius: 30px;
   color: white;
+  font-weight: 600;
+  &:hover {
+    color: black;
+  }
 `;
 
 const HomeBanner = () => {
@@ -42,7 +46,7 @@ const HomeBanner = () => {
           <input
             type="text"
             placeholder="Search for a movie, tv show, person......"
-            className="flex-1 px-[20px] py-[10px] rounded-[30px] h-[46px] "
+            className="flex-1 px-[20px] py-[10px] rounded-[30px] h-[46px] focus:border-none focus:outline-none"
           />
           <ButtonStyles type="button" className="">
             Search
