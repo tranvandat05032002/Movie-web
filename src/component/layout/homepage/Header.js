@@ -15,10 +15,14 @@ import LanguageItem from "../../menuTippy/LanguageItem";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase-app/firebase-config";
 import Swal from "sweetalert2";
-const HeaderStyles = styled.div`
+const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  top: 0%;
+  left: 0%;
+  z-index: 10;
+  height: var(--height-header);
+  /* transition: 0.2 linear; */
   a {
     &:hover {
       color: white;

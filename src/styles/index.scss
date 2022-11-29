@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import "reset";
 // @import "content";
+//variable
+:root {
+  --height-header: 68px;
+}
 @layer base {
   body {
     line-height: 1.5;
@@ -10,8 +14,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: "Epilogue", sans-serif;
     font-size: 16px;
-    // background-color: #091929;
-    background-color: white;
+    background-color: #091929;
     color: #b2bac2;
     font-family: "Epilogue", sans-serif;
     font-family: "Source Sans Pro", sans-serif;
