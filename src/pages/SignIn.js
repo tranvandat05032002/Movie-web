@@ -15,7 +15,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/auth-context";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithFacebook,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../firebase-app/firebase-config";
 import Swal from "sweetalert2";
 
@@ -40,6 +46,7 @@ const SignIn = () => {
     resolver: yupResolver(validateScheme),
   });
   const { userInfo } = useAuth();
+  console.log("🚀 ~ file: SignIn.js ~ line 48 ~ SignIn ~ userInfo", userInfo);
   const navigate = useNavigate();
   React.useEffect(() => {
     document.title = "Login";
@@ -66,6 +73,28 @@ const SignIn = () => {
         icon: "error",
         confirmButtonColor: "#3085d6",
       });
+    }
+  };
+  //Sign-in with facebook
+  const signInWithFacebook = async () => {
+    try {
+      const provider = new FacebookAuthProvider();
+      const accountFacebook = await signInWithPopup(auth, provider);
+      navigate("/");
+      toast.success("Login successfully!");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  // Sign-in with google
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const accountGoogle = await signInWithPopup(auth, provider);
+      navigate("/");
+      toast.success("Login successfully!");
+    } catch (error) {
+      toast.error(error.message);
     }
   };
   return (
@@ -104,8 +133,12 @@ const SignIn = () => {
             >
               Login
             </Button>
-            <Button kind="buttonFacebook">Login with Facebook</Button>
-            <Button kind="buttonGmail">Login with Gmail</Button>
+            <Button kind="buttonFacebook" onClick={signInWithFacebook}>
+              Login with Facebook
+            </Button>
+            <Button kind="buttonGmail" onClick={signInWithGoogle}>
+              Login with Gmail
+            </Button>
             <FormNav kind={"login"}>Register?</FormNav>
           </form>
         </Form>
