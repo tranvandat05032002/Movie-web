@@ -1,20 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import ListItem from "../movie/ListItem";
-const HomeListStyles = styled.div`
-  background-color: white;
-`;
+import TVListItem from "../movie/TVListItem";
 
 const HomeList = () => {
   return (
-    <HomeListStyles className="text-black">
-      <ListItem watchOn={"On TV"} type="popular">
+    <div className="text-black bg-[white]">
+      <TVListItem watchOn={"On TV"} type="popular">
         What's Popular
-      </ListItem>
-      <ListItem watchOn={"On TV"} type="airing_today">
+      </TVListItem>
+      <TVListItem watchOn={"On TV"} type="airing_today">
         What's on TV today
-      </ListItem>
-    </HomeListStyles>
+      </TVListItem>
+    </div>
   );
 };
 

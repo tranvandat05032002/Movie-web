@@ -1,5 +1,3 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
@@ -7,16 +5,12 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import styled from "styled-components";
 import TVCard from "./TVCard";
-import { filmOn } from "../../utils/const";
-import { v4 as uuidV4 } from "uuid";
-import axios from "axios";
-import { apiKey } from "../../utils/config";
 import { useFetchAPI } from "../../hooks/useFetchAPI";
 // import useSWR from "swr";
 // import { fetcher } from "../../utils/config";
 const MovieListStyles = styled.div``;
 
-const MovieList = ({ children, watchOn, type = "" }) => {
+const TVListItem = ({ children, watchOn, type = "" }) => {
   //use useSWR fetchAPI
   // const { data, error } = useSWR(
   //   "https://api.themoviedb.org/3/tv/popular?api_key=2537abce0574afa219f72b4d7aacde04",
@@ -64,4 +58,4 @@ const MovieList = ({ children, watchOn, type = "" }) => {
   );
 };
 
-export default MovieList;
+export default TVListItem;
