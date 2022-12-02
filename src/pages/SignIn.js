@@ -79,9 +79,11 @@ const SignIn = () => {
   const signInWithFacebook = async () => {
     try {
       const provider = new FacebookAuthProvider();
-      const accountFacebook = await signInWithPopup(auth, provider);
+       await signInWithPopup(auth, provider);
       navigate("/");
-      toast.success("Login successfully!");
+      toast.success("Login successfully!", {
+        pauseOnHover: false,
+      });
     } catch (error) {
       toast.error(error.message);
     }
@@ -90,9 +92,11 @@ const SignIn = () => {
   const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const accountGoogle = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
       navigate("/");
-      toast.success("Login successfully!");
+      toast.success("Login successfully!", {
+        pauseOnHover: false,
+      });
     } catch (error) {
       toast.error(error.message);
     }

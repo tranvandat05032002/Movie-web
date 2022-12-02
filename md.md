@@ -19,6 +19,13 @@ setup:
 -fontawesome
 -@tippyjs/react
 -pagination: swiper
+-APIkey: 2537abce0574afa219f72b4d7aacde04
+progress circle: npm i react-circular-progressbar
+-axios
+-slick: pagination
+materialUI
+
+- callAPI useSWR
 
 Register:
 -fullName
@@ -31,3 +38,6 @@ Register:
 -login more
 -createAt
 -status: 1 : I accept the Terms and Conditions
+
+Card Item
+TV: popular, top_rated, on_the-air, airing_today

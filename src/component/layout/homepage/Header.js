@@ -15,6 +15,7 @@ import LanguageItem from "../../menuTippy/LanguageItem";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase-app/firebase-config";
 import Swal from "sweetalert2";
+import AvatarMaterial from "../../image/AvatarMaterial";
 const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
@@ -22,7 +23,6 @@ const HeaderStyles = styled.header`
   left: 0%;
   z-index: 10;
   height: var(--height-header);
-  /* transition: 0.2 linear; */
   a {
     &:hover {
       color: white;
@@ -61,7 +61,7 @@ const Header = ({ hideOnClick = false }) => {
           }! 
             Your work has been saved`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 3000,
         });
       }, 500);
     }
@@ -122,10 +122,14 @@ const Header = ({ hideOnClick = false }) => {
               </Button>
             </>
           )}
-          <FontAwesomeIcon
-            className="cursor-pointer text-hightLight"
-            icon={faSearch}
-          ></FontAwesomeIcon>
+          {Object.keys(userInfo).length !== 0 && (
+            <>
+              <AvatarMaterial
+                title={userInfo?.photoURl}
+                url={userInfo?.photoURL}
+              ></AvatarMaterial>
+            </>
+          )}
         </div>
       </div>
     </HeaderStyles>
