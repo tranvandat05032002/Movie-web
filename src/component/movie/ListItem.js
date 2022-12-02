@@ -6,7 +6,7 @@ import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import styled from "styled-components";
-import MovieCard from "./MovieCard";
+import TVCard from "./TVCard";
 import { filmOn } from "../../utils/const";
 import { v4 as uuidV4 } from "uuid";
 import axios from "axios";
@@ -54,7 +54,7 @@ const MovieList = ({ children, watchOn, type = "" }) => {
           {movieList.length > 0 &&
             movieList.map((item) => (
               <SwiperSlide key={item?.id}>
-                <MovieCard data={item}></MovieCard>
+                <TVCard data={item}></TVCard>
               </SwiperSlide>
             ))}
         </Swiper>

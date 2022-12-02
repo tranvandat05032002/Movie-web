@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { URLImageDB } from "../../utils/config";
 import styled from "styled-components";
-const MovieCardStyles = styled.div`
+const TVCardStyles = styled.div`
   padding: 5px 5px;
   border-radius: 8px;
   position: relative;
@@ -25,19 +25,16 @@ const MovieCardStyles = styled.div`
     border-radius: inherit;
     background: linear-gradient(
       65deg,
-      /* rgba(143, 224, 255, 0.2),
-      rgba(210, 105, 200, 0.2),
-      rgba(249, 134, 127, 0.4) */
-        rgba(117, 201, 175, 0.2),
+      rgba(117, 201, 175, 0.2),
       rgba(249, 134, 127, 0.4),
       rgba(84, 194, 191, 0.6)
     );
   }
 `;
 
-const MovieCard = ({ data }) => {
+const TVCard = ({ data }) => {
   return (
-    <MovieCardStyles className="ml-[40px] w-[170px] min-w-[170px]">
+    <TVCardStyles className="ml-[40px] w-[170px] min-w-[170px]">
       <div className="max-h-[290px] h-[290px] leading-[20px]">
         <div className="min-h-[calc(150px*1.5)] h-[calc(150px*1.5)] bg-[#dbdbdb] overflow-hidden w-full rounded-lg shadow">
           <img
@@ -89,9 +86,9 @@ const MovieCard = ({ data }) => {
           <span className="font-semibold text-bluef1">{data?.vote_count}</span>
         </div>
       </div>
-    </MovieCardStyles>
+    </TVCardStyles>
     // </div>
   );
 };
 
-export default MovieCard;
+export default TVCard;
