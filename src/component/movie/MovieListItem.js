@@ -3,18 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import TVCard from "./TVCard";
 import { useFetchAPI } from "../../hooks/useFetchAPI";
-// import useSWR from "swr";
-// import { fetcher } from "../../utils/config";
-const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {
-  //use useSWR fetchAPI
-  // const { data, error } = useSWR(
-  //   "https://api.themoviedb.org/3/tv/popular?api_key=2537abce0574afa219f72b4d7aacde04",
-  //   fetcher,
-  // );
-  // console.log(data);
+import MovieCard from "./MovieCard";
+import { useNavigate } from "react-router-dom";
+const MovieListItem = ({ children, watchOn, type = "", sys = "" }) => {
   const { movieList } = useFetchAPI(sys, type);
+  const navigate = useNavigate();
   return (
     <div className="w-full pt-[30px]">
       <div className="flex items-center pl-[30px]">
@@ -45,7 +39,10 @@ const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {
           {movieList.length > 0 &&
             movieList.map((item) => (
               <SwiperSlide key={item?.id}>
-                <TVCard data={item}></TVCard>
+                <MovieCard
+                  onClick={() => navigate(`/${sys}/${item?.id}`)}
+                  data={item}
+                ></MovieCard>
               </SwiperSlide>
             ))}
         </Swiper>
@@ -55,4 +52,4 @@ const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {
   );
 };
 
-export default TVListItem;
+export default MovieListItem;

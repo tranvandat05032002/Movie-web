@@ -45,13 +45,15 @@ const TVCard = ({ data }) => {
         </div>
         {/* <div className="flex flex-col flex-wrap content-start w-full leading-[20px] py-[10px] whitespace-normal"> */}
 
-        <h4 className="text-[18px] font-bold mt-[2px]">{data?.name}</h4>
-        <p className="text-[rgba(0,0,0,0.8)] text-[18px] mt-[2px]">
+        <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
+          {data?.name}
+        </h4>
+        <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
           {data?.first_air_date}
         </p>
       </div>
 
-      <div className="flex mt-[5px] justify-between w-full items-center">
+      <div className="flex mt-[5px] justify-between w-full items-center pt-[10px]">
         <div className="flex items-baseline content-end">
           <FontAwesomeIcon
             icon={faStar}
