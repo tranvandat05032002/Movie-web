@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage, PageNotFound, SignIn, SignUp } from "./pages";
 import ForgotPassword from "./pages/ForgotPassword";
 import Main from "./component/layout/homepage/Main";
+import ModalRunVideo from "./component/portal/ModalRunVideo";
 
 function App() {
   return (

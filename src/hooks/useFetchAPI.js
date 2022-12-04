@@ -11,7 +11,6 @@ export function useFetchAPI(sys = "", type = "") {
           const response = await axios.get(
             `https://api.themoviedb.org/3/${sys}/${type}?api_key=${apiKey}`
           );
-          console.log(response);
           if (response.data?.results) {
             setMovieList(response.data?.results);
           }

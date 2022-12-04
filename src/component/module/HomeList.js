@@ -1,6 +1,7 @@
 import React from "react";
 import MovieListItem from "../movie/MovieListItem";
 import TVListItem from "../movie/TVListItem";
+import VideoLatestList from "../movie/VideoLatestList";
 
 const HomeList = () => {
   return (
@@ -11,6 +12,9 @@ const HomeList = () => {
       <MovieListItem watchOn={"Movies"} sys="movie" type="popular">
         What's Popular
       </MovieListItem>
+      <VideoLatestList watchOn={"Movies"} sys="movie" type="now_playing">
+        NowPlaying Trailers
+      </VideoLatestList>
     </div>
   );
 };
