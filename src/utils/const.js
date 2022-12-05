@@ -11,6 +11,7 @@ export const theme = {
   backgroundInput: "#384152",
   colorGoogleBlue: "#4188f6",
   bgPrimary: "#091929",
+  inputActive: "#a2f7c8",
 };
 
 //Header component
