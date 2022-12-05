@@ -19,7 +19,6 @@ import {
   FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInWithFacebook,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase-app/firebase-config";
@@ -39,7 +38,6 @@ const SignIn = () => {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { isSubmitting, isValid, errors },
   } = useForm({
     mode: "onChange",
@@ -79,7 +77,7 @@ const SignIn = () => {
   const signInWithFacebook = async () => {
     try {
       const provider = new FacebookAuthProvider();
-       await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
       navigate("/");
       toast.success("Login successfully!", {
         pauseOnHover: false,

@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { NavLink } from "react-router-dom";
 import LoadingSniper from "../loading/LoadingSniper";
 const ButtonStyles = styled.button`
   padding: 11px 10px;

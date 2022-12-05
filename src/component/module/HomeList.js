@@ -13,7 +13,7 @@ const HomeList = () => {
         What's Popular
       </MovieListItem>
       <VideoLatestList watchOn={"Movies"} sys="movie" type="now_playing">
-        NowPlaying Trailers
+        Now Playing | Trailers
       </VideoLatestList>
     </div>
   );

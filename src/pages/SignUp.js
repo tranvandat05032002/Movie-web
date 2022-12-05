@@ -50,11 +50,7 @@ const SignUp = () => {
   const handleCreateUser = async (values) => {
     if (!isValid) return;
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        values.email,
-        values.password
-      );
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
       await updateProfile(auth.currentUser, {
         displayName: values.fullName,
         photoURL:
