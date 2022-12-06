@@ -8,6 +8,7 @@ export const theme = {
   backgroundForm: "#1f2938",
   backgroundInput: "#384152",
   bluef1: "#1878f3",
+  // eslint-disable-next-line
   backgroundInput: "#384152",
   colorGoogleBlue: "#4188f6",
   bgPrimary: "#091929",

@@ -9,6 +9,7 @@ module.exports = {
         borderLineBlue: "#81cff5",
         bgPrimary: "#091929",
         inputActive: "#a2f7c8",
+        textPrimary: "#b2bac2",
       },
     },
   },

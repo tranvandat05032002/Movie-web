@@ -1,5 +1,3 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import React from "react";
@@ -21,7 +19,7 @@ const HeaderStyles = styled.header`
   width: 100%;
   top: 0%;
   left: 0%;
-  z-index: 10;
+  z-index: 500;
   height: var(--height-header);
   a {
     &:hover {
@@ -61,10 +59,11 @@ const Header = ({ hideOnClick = false }) => {
           }! 
             Your work has been saved`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 6000,
         });
       }, 500);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // }
   return (
