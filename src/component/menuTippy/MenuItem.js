@@ -13,7 +13,7 @@ const MenuItem = ({ hideOnClick, item }) => {
         placement="bottom-start"
         render={(attrs) => (
           <div
-            className="py-2 text-black bg-white max-w-[350px] w-[171px] rounded-[4px]"
+            className="py-2 cursor-pointer text-black bg-white max-w-[350px] w-[171px] rounded-[4px]"
             tabIndex="-1"
             {...attrs}
           >
@@ -28,7 +28,7 @@ const MenuItem = ({ hideOnClick, item }) => {
           </div>
         )}
       >
-        <span className="cursor-default">{item.title}</span>
+        <span className="cursor-pointer">{item.title}</span>
       </Tippy>
     </span>
   );
