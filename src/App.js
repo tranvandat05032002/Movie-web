@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage, PageNotFound, SignIn, SignUp } from "./pages";
 import ForgotPassword from "./pages/ForgotPassword";
 import Main from "./component/layout/homepage/Main";
+import DashboardLayout from "./component/module/dashboard/DashboardLayout";
+import MoviePopular from "./component/module/movieList/MoviePopular";
 
 function App() {
   return (
@@ -19,6 +21,12 @@ function App() {
           <Route path="/" element={<Main></Main>}>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             {/* <Route path="/movie:slug"></Route> */}
+            <Route element={<DashboardLayout></DashboardLayout>}>
+              <Route
+                path="/movie"
+                element={<MoviePopular></MoviePopular>}
+              ></Route>
+            </Route>
           </Route>
         </Routes>
       </AuthProvider>

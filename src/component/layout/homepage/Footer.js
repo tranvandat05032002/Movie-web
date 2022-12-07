@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import Header from "./Header";
 const FooterStyles = styled.div`
   margin-top: var(--margin-top);
   width: 100%;

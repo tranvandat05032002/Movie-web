@@ -8,6 +8,7 @@
   --height-header: 68px;
   --margin-top: 30px;
   --padding-viewModal: 16px;
+  --padding-dashboard: 20px;
 }
 @layer base {
   body {
@@ -100,4 +101,37 @@ body {
 .active {
   background-color: #032541;
   color: #a2f7c8;
+}
+
+//pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px 20px;
+  margin-top: 20px;
+  font-size: 18px;
+  color: black;
+  .selected {
+    background-color: #81cff5;
+    color: white;
+    font-weight: 700;
+    padding: 0px 9px;
+    border-radius: 100%;
+  }
+  .previous,
+  .next {
+    padding: 0px 0px;
+    cursor: pointer;
+    a {
+      font-weight: 500;
+      border-radius: 100%;
+      padding: 4px 9px;
+    }
+    &:hover {
+      background-color: #a0dbf9;
+      color: white;
+      border-radius: 100%;
+    }
+  }
 }

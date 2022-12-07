@@ -26,6 +26,8 @@ progress circle: npm i react-circular-progressbar
 materialUI
 -nprogress load router
 
+- React-pagination
+
 - callAPI useSWR
 
 Register:
