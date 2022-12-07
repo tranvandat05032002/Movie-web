@@ -35,7 +35,10 @@ const ButtonStyles = styled.button`
 const HomeBanner = () => {
   return (
     <BannerStyles>
-      <div className="flex w-full h-full px-[40px] py-[30px] flex-wrap flex-col items-start">
+      <div
+        className="flex w-full h-full px-[40px] py-[30px] flex-wrap flex-col items-start"
+        id="banner"
+      >
         <div className="mb-[30px] w-full">
           <h1 className="text-white text-[48px] font-bold leading-[1]">
             Welcome.

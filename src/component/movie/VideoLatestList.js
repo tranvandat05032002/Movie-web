@@ -9,7 +9,7 @@ import VideoLatestCard from "./VideoLatestCard";
 import { URLImageDB } from "../../utils/config";
 import ModalRunVideo from "../portal/ModalRunVideo";
 const VideoLatestListStyles = styled.div`
-  margin-top: var(--height-header);
+  margin-top: var(--margin-top);
   padding: 16px 0px;
   color: white;
 `;

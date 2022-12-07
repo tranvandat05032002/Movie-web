@@ -7,7 +7,6 @@ import VideoLatestList from "../movie/VideoLatestList";
 
 const HomeList = () => {
   const { userInfo } = useAuth();
-  console.log(Object.keys(userInfo).length);
   return (
     <div className="text-black bg-[white]">
       <TVListItem watchOn={"TV Show"} sys="tv" type="popular">

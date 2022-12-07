@@ -5,7 +5,6 @@ import HomeList from "../component/module/HomeList";
 
 const HomePageStyles = styled.div`
   /* background-color: white; */
-  height: 1000px;
 `;
 
 const HomePage = () => {

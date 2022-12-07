@@ -13,6 +13,7 @@ const MovieJoinStyles = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
+  margin-top: var(--margin-top);
 `;
 
 const MovieJoin = () => {

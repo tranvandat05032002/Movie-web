@@ -18,7 +18,7 @@ function App() {
           <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
           <Route path="/" element={<Main></Main>}>
             <Route path="/" element={<HomePage></HomePage>}></Route>
-            <Route path="/movie:slug"></Route>
+            {/* <Route path="/movie:slug"></Route> */}
           </Route>
         </Routes>
       </AuthProvider>
