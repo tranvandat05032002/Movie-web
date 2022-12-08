@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import HomeBanner from "../component/module/home/HomeBanner";
-import HomeList from "../component/module/home/HomeList";
+import HomeBanner from "../module/home/HomeBanner";
+import HomeList from "../module/home/HomeList";
 
 const HomePageStyles = styled.div`
   /* background-color: white; */

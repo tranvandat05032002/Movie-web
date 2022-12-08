@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage, PageNotFound, SignIn, SignUp } from "./pages";
 import ForgotPassword from "./pages/ForgotPassword";
 import Main from "./component/layout/homepage/Main";
-import DashboardLayout from "./component/module/dashboard/DashboardLayout";
-import MoviePopular from "./component/module/movieList/MoviePopular";
+import DashboardLayout from "./module/dashboard/DashboardLayout";
+import MoviePopular from "./module/movieList/MoviePopular";
 
 function App() {
   return (
