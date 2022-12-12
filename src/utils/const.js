@@ -23,7 +23,7 @@ export const dataCategory = [
     menu: [
       {
         title: "Popular",
-        to: "/movie/popular",
+        to: "/movie",
       },
       {
         title: "Now Playing",
@@ -100,5 +100,40 @@ export const filmOn = [
   {
     title: "On TV",
     active: "active",
+  },
+];
+
+export const selectFilm = [
+  {
+    type: "TitleDescending",
+    title: "Title(A-Z)",
+  },
+  {
+    type: "TitleAscending",
+    title: "Title(Z-A)",
+  },
+  {
+    type: "DateDescending",
+    title: "Release Date Descending",
+  },
+  {
+    type: "DateAscending",
+    title: "Release Date Ascending",
+  },
+  {
+    type: "RatingDescending",
+    title: "Rating Descending",
+  },
+  {
+    type: "RatingAscending",
+    title: "Rating Ascending",
+  },
+  {
+    type: "CountDescending",
+    title: "Count Descending",
+  },
+  {
+    type: "CountAscending",
+    title: "Count Ascending",
   },
 ];

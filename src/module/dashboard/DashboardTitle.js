@@ -9,6 +9,8 @@ const DashboardTitleStyles = styled.div`
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  padding: calc(var(--padding-dashboard) - 5px) 0px;
+
   body {
     font: 900 80px/1 "Source Sans Pro", Arial, sans-serif;
     background: #becccc;
@@ -18,10 +20,10 @@ const DashboardTitleStyles = styled.div`
     padding-top: 10%;
   }
 `;
-const DashboardTitle = () => {
+const DashboardTitle = ({ title = "" }) => {
   return (
     <div className="text-[25.6px] w-[400px] font-semibold text-start">
-      <DashboardTitleStyles>Popular Movies</DashboardTitleStyles>
+      <DashboardTitleStyles>{title}</DashboardTitleStyles>
     </div>
   );
 };

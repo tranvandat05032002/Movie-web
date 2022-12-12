@@ -22,11 +22,13 @@ const ButtonStyles = styled.button`
 const DashboardHeading = () => {
   const { setValues } = useInput();
   const handleChange = debounce((e) => {
+    if (e.target.value.startWidth(" ")) {
+      return;
+    }
     setValues(e.target.value);
   }, 600);
   return (
     <div className="flex items-center justify-between flex-nowrap">
-      <DashboardTitle></DashboardTitle>
       <div className="relative flex w-full">
         <input
           type="text"
