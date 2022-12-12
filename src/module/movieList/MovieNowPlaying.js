@@ -5,16 +5,16 @@ import { useSort } from "../../hooks/useSort";
 import MovieCard from "../movie/MovieCard";
 import SelectMaterial from "../../component/materialUI/SelectMaterial";
 import DashboardTitle from "../dashboard/DashboardTitle";
-const MoviePopularStyles = styled.div`
+const MovieNowPlayingStyles = styled.div`
   margin-left: 35px;
 `;
 
-const MoviePopular = () => {
+const MovieNowPlaying = () => {
   const { handlePageClick, sortedData, sortType, pageCount, setSortType } =
-    useSort("popular");
+    useSort("now_playing");
   return (
-    <MoviePopularStyles>
-      <DashboardTitle title="Popular Movies"></DashboardTitle>
+    <MovieNowPlayingStyles>
+      <DashboardTitle title="NowPlaying Movies"></DashboardTitle>
       <SelectMaterial
         setSortType={setSortType}
         sortType={sortType}
@@ -38,8 +38,8 @@ const MoviePopular = () => {
         pageRangeDisplayed={5}
         className="pagination"
       ></ReactPaginate>
-    </MoviePopularStyles>
+    </MovieNowPlayingStyles>
   );
 };
 
-export default MoviePopular;
+export default MovieNowPlaying;

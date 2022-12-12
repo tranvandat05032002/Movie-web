@@ -32,10 +32,12 @@ const MovieCardStyles = styled.div`
   }
 `;
 
-const MovieCard = ({ onClick = () => {}, data }) => {
+const MovieCard = ({ onClick = () => {}, data, noPaddingCard }) => {
   return (
     <MovieCardStyles
-      className="ml-[40px] w-[170px] min-w-[170px]"
+      className={`${noPaddingCard ? "" : "ml-[40px]"} ${
+        noPaddingCard ? "w-[176px] min-w-[176px]" : "w-[170px] min-w-[170px]"
+      }`}
       onClick={onClick}
     >
       <div className="max-h-[290px] h-[290px] leading-[20px]">
