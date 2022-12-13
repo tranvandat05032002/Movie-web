@@ -7,9 +7,11 @@ const Main = () => {
   return (
     <div className="bg-white">
       <>
-        <Header></Header>
-        <Outlet></Outlet>
-        <Footer></Footer>
+        <div className="border border-orange-600">
+          <Header></Header>
+          <Outlet></Outlet>
+          <Footer></Footer>
+        </div>
       </>
     </div>
   );
