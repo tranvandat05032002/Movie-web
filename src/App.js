@@ -8,7 +8,6 @@ import MoviePopular from "./module/movieList/MoviePopular";
 import MovieNowPlaying from "./module/movieList/MovieNowPlaying";
 import MovieUpcoming from "./module/movieList/MovieUpcoming";
 import MovieRated from "./module/movieList/MovieRated";
-
 function App() {
   return (
     <div className="App">

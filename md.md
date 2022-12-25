@@ -25,6 +25,7 @@ progress circle: npm i react-circular-progressbar
 -slick: pagination
 materialUI
 -nprogress load router
+-simplebar-react
 
 - React-pagination
 

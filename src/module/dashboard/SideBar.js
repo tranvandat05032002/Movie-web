@@ -34,10 +34,6 @@ const SideBar = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/trending/all/day?api_key=2537abce0574afa219f72b4d7aacde04&page=${page}`
       );
-      // console.log(response);
-      // if (response.data?.results) {
-      //   setListTrending(response.data?.results);
-      // }
       return response.data?.results;
     } catch (error) {
       console.log(error.message);
@@ -57,6 +53,24 @@ const SideBar = () => {
   React.useEffect(() => {
     handleLoadMoreTrending.current();
   }, [handleLoadMoreTrending]);
+  console.log(listTrending);
+  const sortTrending = [];
+  listTrending.forEach((item) => {
+    // sortTrending.push(item?.original_title.slice(0, 2));
+    console.log(item?.original_title?.slice(0, 2));
+    if (item?.original_title || item?.original_name) {
+      sortTrending.push(
+        item?.original_title?.slice(0, 1).toUpperCase() ||
+          item?.original_name?.slice(0, 1).toUpperCase()
+      );
+    }
+  });
+  console.log(sortTrending);
+  const quickSort = (arr) => {
+    if (arr.length < 2) return;
+    const pivotIndex = arr.length - 1;
+    const povot = arr[pivotIndex];
+  };
   return (
     <SideBarStyles className="text-black w-[240px] min-w-[240px] text-start">
       {/* <h1 className="text-[1.5rem] mb-[5px]">Movie Trending</h1> */}
@@ -93,7 +107,7 @@ const SideBar = () => {
                   <img
                     src={`${URLImageDB + item.poster_path}`}
                     alt=""
-                    className="w-full h-full"
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="flex flex-col items-start leading-5">

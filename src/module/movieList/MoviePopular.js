@@ -8,7 +8,6 @@ import DashboardTitle from "../dashboard/DashboardTitle";
 const MoviePopularStyles = styled.div`
   margin-left: 35px;
 `;
-
 const MoviePopular = () => {
   const { handlePageClick, sortedData, sortType, pageCount, setSortType } =
     useSort("popular");
