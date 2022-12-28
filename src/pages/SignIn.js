@@ -1,6 +1,19 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
+import AuthenticationPage from "./AuthenticationPage";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import Swal from "sweetalert2";
+import { useAuth } from "context/auth-context";
+import { auth } from "firebase-app/firebase-config";
 import {
   Button,
   Field,
@@ -9,20 +22,7 @@ import {
   Input,
   InputPassword,
   Label,
-} from "../component";
-import AuthenticationPage from "./AuthenticationPage";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
-import { useAuth } from "../context/auth-context";
-import {
-  FacebookAuthProvider,
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
-import { auth } from "../firebase-app/firebase-config";
-import Swal from "sweetalert2";
+} from "component";
 
 const SignIn = () => {
   const validateScheme = yup.object({

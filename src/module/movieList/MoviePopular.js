@@ -1,10 +1,10 @@
+import SelectMaterial from "component/materialUI/SelectMaterial";
+import { useSort } from "hooks/useSort";
+import DashboardTitle from "module/dashboard/DashboardTitle";
+import MovieCard from "module/movie/MovieCard";
 import React from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
-import { useSort } from "../../hooks/useSort";
-import MovieCard from "../movie/MovieCard";
-import SelectMaterial from "../../component/materialUI/SelectMaterial";
-import DashboardTitle from "../dashboard/DashboardTitle";
 const MoviePopularStyles = styled.div`
   margin-left: 35px;
 `;

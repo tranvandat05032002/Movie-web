@@ -1,8 +1,7 @@
+import EyeClose from "component/icon/EyeClose";
+import EyeOpen from "component/icon/EyeOpen";
 import React from "react";
-import EyeClose from "../icon/EyeClose";
-import EyeOpen from "../icon/EyeOpen";
 import Input from "./Input";
-
 const InputPassword = ({ control }) => {
   const [togglePassword, setTogglePassword] = React.useState(false);
   return (

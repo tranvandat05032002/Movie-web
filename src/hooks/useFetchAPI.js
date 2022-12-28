@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { apiKey } from "../utils/config";
+import { apiKey } from "utils/config";
 export function useFetchAPI(sys = "", type = "") {
   const [movieList, setMovieList] = React.useState([]);
   React.useEffect(() => {

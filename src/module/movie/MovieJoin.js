@@ -1,7 +1,7 @@
+import { Button } from "component";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Button } from "../../component";
 
 const MovieJoinStyles = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),

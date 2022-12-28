@@ -2,6 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import AuthenticationPage from "./AuthenticationPage";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import slugify from "slugify";
 import {
   Button,
   Field,
@@ -10,14 +16,8 @@ import {
   Input,
   InputPassword,
   Label,
-} from "../component";
-import AuthenticationPage from "./AuthenticationPage";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { toast } from "react-toastify";
-import { auth, db } from "../firebase-app/firebase-config";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import slugify from "slugify";
+} from "component";
+import { auth, db } from "firebase-app/firebase-config";
 
 const SignUp = () => {
   const validateScheme = yup.object({

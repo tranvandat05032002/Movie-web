@@ -2,7 +2,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
-import { URLImageDB } from "../../utils/config";
+import { URLImageDB } from "utils/config";
 const VideoLatestCardStyles = styled.div`
   margin-top: 15px;
   .icon-play {

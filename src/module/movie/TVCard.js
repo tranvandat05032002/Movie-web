@@ -1,8 +1,8 @@
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { URLImageDB } from "../../utils/config";
 import styled from "styled-components";
+import { URLImageDB } from "utils/config";
 const TVCardStyles = styled.div`
   padding: 5px 5px;
   border-radius: 8px;

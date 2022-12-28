@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useFetchAPI } from "hooks/useFetchAPI";
 import TVCard from "./TVCard";
-import { useFetchAPI } from "../../hooks/useFetchAPI";
 // import useSWR from "swr";
 // import { fetcher } from "../../utils/config";
 const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {

@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { v4 as uuidV4 } from "uuid";
-import { selectFilm } from "../../utils/const";
+import { selectFilm } from "utils/const";
 
 const SelectMaterial = ({ setSortType, sortType, title }) => {
   return (

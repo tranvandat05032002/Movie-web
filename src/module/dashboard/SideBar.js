@@ -5,14 +5,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useSort } from "../../hooks/useSort";
-import { selectFilm } from "../../utils/const";
 import { v4 as uuidV4 } from "uuid";
-import DashboardTitle from "./DashboardTitle";
 import axios from "axios";
-import { URLImageDB } from "../../utils/config";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
+import { useSort } from "hooks/useSort";
+import DashboardTitle from "./DashboardTitle";
+import { selectFilm } from "utils/const";
+import { URLImageDB } from "utils/config";
 const SideBarStyles = styled.div`
   padding: 0px 0px calc(var(--padding-dashboard) - 5px) 0px;
   .item-list {
@@ -65,12 +65,11 @@ const SideBar = () => {
       );
     }
   });
-  console.log(sortTrending);
-  const quickSort = (arr) => {
-    if (arr.length < 2) return;
-    const pivotIndex = arr.length - 1;
-    const povot = arr[pivotIndex];
-  };
+  // const quickSort = (arr) => {
+  //   if (arr.length < 2) return;
+  //   const pivotIndex = arr.length - 1;
+  //   const povot = arr[pivotIndex];
+  // };
   return (
     <SideBarStyles className="text-black w-[240px] min-w-[240px] text-start">
       {/* <h1 className="text-[1.5rem] mb-[5px]">Movie Trending</h1> */}

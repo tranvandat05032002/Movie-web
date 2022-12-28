@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import DashboardHeading from "./DashboardHeading";
+import { InputProvider } from "context/input-context";
+import Background from "component/animated/Background";
 import SideBar from "./SideBar";
-import { InputProvider } from "../../context/input-context";
-import Background from "../../component/animated/Background";
 const DashboardHeadingStyles = styled.div`
   margin-top: var(--height-header);
   padding: 30px 40px;

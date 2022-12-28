@@ -4,10 +4,10 @@ import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import styled from "styled-components";
-import { useFetchAPI } from "../../hooks/useFetchAPI";
+import { useFetchAPI } from "hooks/useFetchAPI";
+import { URLImageDB } from "utils/config";
 import VideoLatestCard from "./VideoLatestCard";
-import { URLImageDB } from "../../utils/config";
-import ModalRunVideo from "../../component/portal/ModalRunVideo";
+import ModalRunVideo from "component/portal/ModalRunVideo";
 const VideoLatestListStyles = styled.div`
   margin-top: var(--margin-top);
   padding: 16px 0px;

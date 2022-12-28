@@ -1,9 +1,9 @@
+import { useAuth } from "context/auth-context";
+import MovieJoin from "module/movie/MovieJoin";
+import MovieListItem from "module/movie/MovieListItem";
+import TVListItem from "module/movie/TVListItem";
+import VideoLatestList from "module/movie/VideoLatestList";
 import React from "react";
-import { useAuth } from "../../context/auth-context";
-import MovieJoin from "../movie/MovieJoin";
-import MovieListItem from "../movie/MovieListItem";
-import TVListItem from "../movie/TVListItem";
-import VideoLatestList from "../movie/VideoLatestList";
 
 const HomeList = () => {
   const { userInfo } = useAuth();

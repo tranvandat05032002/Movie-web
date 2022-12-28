@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import { useFetchAPI } from "../../hooks/useFetchAPI";
-import MovieCard from "./MovieCard";
 import { useNavigate } from "react-router-dom";
+import { useFetchAPI } from "hooks/useFetchAPI";
+import MovieCard from "./MovieCard";
 const MovieListItem = ({ children, watchOn, type = "", sys = "" }) => {
   const { movieList } = useFetchAPI(sys, type);
   const navigate = useNavigate();

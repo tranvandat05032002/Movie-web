@@ -4,7 +4,7 @@ import axios from "axios";
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { apiKey, headerVideoURL } from "../../utils/config";
+import { apiKey, headerVideoURL } from "utils/config";
 const ModalRunVideoStyles = styled.div`
   position: absolute;
   top: 0%;

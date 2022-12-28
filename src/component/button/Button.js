@@ -1,6 +1,6 @@
+import LoadingSniper from "component/loading/LoadingSniper";
 import React from "react";
 import styled, { css } from "styled-components";
-import LoadingSniper from "../loading/LoadingSniper";
 const ButtonStyles = styled.button`
   padding: 11px 10px;
   margin-top: 10px;

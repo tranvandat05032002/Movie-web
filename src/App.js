@@ -1,13 +1,13 @@
 import { AuthProvider } from "./context/auth-context";
 import { Route, Routes } from "react-router-dom";
 import { HomePage, PageNotFound, SignIn, SignUp } from "./pages";
-import ForgotPassword from "./pages/ForgotPassword";
-import Main from "./component/layout/homepage/Main";
-import DashboardLayout from "./module/dashboard/DashboardLayout";
-import MoviePopular from "./module/movieList/MoviePopular";
-import MovieNowPlaying from "./module/movieList/MovieNowPlaying";
-import MovieUpcoming from "./module/movieList/MovieUpcoming";
-import MovieRated from "./module/movieList/MovieRated";
+import ForgotPassword from "pages/ForgotPassword";
+import MoviePopular from "module/movieList/MoviePopular";
+import Main from "component/layout/homepage/Main";
+import DashboardLayout from "module/dashboard/DashboardLayout";
+import MovieNowPlaying from "module/movieList/MovieNowPlaying";
+import MovieUpcoming from "module/movieList/MovieUpcoming";
+import MovieRated from "module/movieList/MovieRated";
 function App() {
   return (
     <div className="App">
