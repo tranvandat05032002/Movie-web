@@ -45,7 +45,7 @@ export const dataCategory = [
     menu: [
       {
         title: "Popular",
-        to: "/tv/popular",
+        to: "/tv",
       },
       {
         title: "Airing Today",

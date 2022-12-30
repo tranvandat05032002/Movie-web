@@ -1,13 +1,18 @@
 import { AuthProvider } from "./context/auth-context";
 import { Route, Routes } from "react-router-dom";
-import { HomePage, PageNotFound, SignIn, SignUp } from "./pages";
 import ForgotPassword from "pages/ForgotPassword";
-import MoviePopular from "module/movieList/MoviePopular";
+import { HomePage, PageNotFound, SignIn, SignUp } from "pages";
 import Main from "component/layout/homepage/Main";
 import DashboardLayout from "module/dashboard/DashboardLayout";
+import MoviePopular from "module/movieList/MoviePopular";
 import MovieNowPlaying from "module/movieList/MovieNowPlaying";
 import MovieUpcoming from "module/movieList/MovieUpcoming";
 import MovieRated from "module/movieList/MovieRated";
+import TVMoviePopular from "module/tvList/TVMoviePopular";
+import TVAiringToday from "module/tvList/TVAiringToday";
+import TVMovieOnTV from "module/tvList/TVMovieOnTV";
+import TVMovieTopRated from "module/tvList/TVMovieTopRated";
+import MovieDetailsPage from "pages/MovieDetailsPage";
 function App() {
   return (
     <div className="App">
@@ -22,7 +27,6 @@ function App() {
           <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
           <Route path="/" element={<Main></Main>}>
             <Route path="/" element={<HomePage></HomePage>}></Route>
-            {/* <Route path="/movie:slug"></Route> */}
             <Route element={<DashboardLayout></DashboardLayout>}>
               <Route
                 path="/movie"
@@ -40,7 +44,39 @@ function App() {
                 path="/movie/top-rated"
                 element={<MovieRated></MovieRated>}
               ></Route>
+              <Route
+                path="/tv"
+                element={<TVMoviePopular></TVMoviePopular>}
+              ></Route>
+              <Route
+                path="/tv/airing-today"
+                element={<TVAiringToday></TVAiringToday>}
+              ></Route>
+              <Route
+                path="/tv/on-tv"
+                element={<TVMovieOnTV></TVMovieOnTV>}
+              ></Route>
+              <Route
+                path="/tv/top-rated"
+                element={<TVMovieTopRated></TVMovieTopRated>}
+              ></Route>
             </Route>
+            <Route
+              path="/movie/:movieID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/movie/now-playing/:playingID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/movie/upcoming/:comingID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/movie/top-rated/:ratedID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
           </Route>
         </Routes>
       </AuthProvider>

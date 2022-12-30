@@ -36,9 +36,9 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard }) => {
   return (
     <MovieCardStyles
       className={`${noPaddingCard ? "" : "ml-[40px]"} ${
-        noPaddingCard ? "w-[176px] min-w-[176px]" : "w-[170px] min-w-[170px]"
+        noPaddingCard ? "w-[176px] min-w-[176px]" : "w-[170px] min-w-[170px] "
       }`}
-      onClick={onClick}
+      onClick={() => onClick(data.id)}
     >
       <div className="max-h-[290px] h-[290px] leading-[20px]">
         <div className="min-h-[calc(150px*1.5)] h-[calc(150px*1.5)] bg-[#dbdbdb] overflow-hidden w-full rounded-lg shadow">

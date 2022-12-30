@@ -1,4 +1,5 @@
 import SelectMaterial from "component/materialUI/SelectMaterial";
+import { useNavigation } from "hooks/useNavigation";
 import { useSort } from "hooks/useSort";
 import DashboardTitle from "module/dashboard/DashboardTitle";
 import MovieCard from "module/movie/MovieCard";
@@ -12,6 +13,7 @@ const MovieNowPlayingStyles = styled.div`
 const MovieNowPlaying = () => {
   const { handlePageClick, sortedData, sortType, pageCount, setSortType } =
     useSort("now_playing");
+  const { getURL } = useNavigation();
   return (
     <MovieNowPlayingStyles>
       <DashboardTitle title="NowPlaying Movies"></DashboardTitle>
@@ -24,7 +26,12 @@ const MovieNowPlaying = () => {
         <div className="grid grid-cols-5 gap-x-[18px] gap-y-[10px] w-full">
           {sortedData.length >= 0 &&
             sortedData.map((item) => (
-              <MovieCard noPaddingCard key={item.id} data={item}></MovieCard>
+              <MovieCard
+                noPaddingCard
+                onClick={getURL}
+                key={item.id}
+                data={item}
+              ></MovieCard>
             ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import SelectMaterial from "component/materialUI/SelectMaterial";
+import { useNavigation } from "hooks/useNavigation";
 import { useSort } from "hooks/useSort";
 import DashboardTitle from "module/dashboard/DashboardTitle";
 import MovieCard from "module/movie/MovieCard";
@@ -11,6 +12,7 @@ const MoviePopularStyles = styled.div`
 const MoviePopular = () => {
   const { handlePageClick, sortedData, sortType, pageCount, setSortType } =
     useSort("popular");
+  const { getURL } = useNavigation();
   return (
     <MoviePopularStyles>
       <DashboardTitle title="Popular Movies"></DashboardTitle>
@@ -23,7 +25,12 @@ const MoviePopular = () => {
         <div className="grid grid-cols-5 gap-x-[18px] gap-y-[10px] w-full">
           {sortedData.length >= 0 &&
             sortedData.map((item) => (
-              <MovieCard noPaddingCard key={item.id} data={item}></MovieCard>
+              <MovieCard
+                onClick={getURL}
+                noPaddingCard
+                key={item.id}
+                data={item}
+              ></MovieCard>
             ))}
         </div>
       </div>
