@@ -20,6 +20,7 @@ const HeaderStyles = styled.header`
   top: 0%;
   left: 0%;
   z-index: 500;
+  transition: 0.2s ease-in-out;
   height: var(--height-header);
   a {
     &:hover {
@@ -27,8 +28,24 @@ const HeaderStyles = styled.header`
     }
   }
 `;
-const Header = ({ hideOnClick = false }) => {
+const Header = ({ hideOnClick = false, mainRef = null }) => {
   const { userInfo } = useAuth();
+  const headerRef = React.useRef();
+  React.useEffect(() => {
+    const element = headerRef.current;
+    const elementHeight = headerRef.current.clientHeight;
+    const handleHiddenHeader = () => {
+      if (window.scrollY > elementHeight - 10) {
+        element.classList.add("headerTranslate");
+      } else if (window.scrollY <= elementHeight + 10) {
+        element.classList.remove("headerTranslate");
+      }
+    };
+    window.addEventListener("scroll", handleHiddenHeader);
+    return () => {
+      window.removeEventListener("scroll", handleHiddenHeader);
+    };
+  }, []);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth);
@@ -67,7 +84,7 @@ const Header = ({ hideOnClick = false }) => {
   }, []);
   // }
   return (
-    <HeaderStyles className="bg-bgPrimary">
+    <HeaderStyles className="bg-bgPrimary" ref={headerRef}>
       <div className="container flex items-center justify-between w-full p-[34px]  max-h-3">
         <div className="flex items-center justify-around  flex-nowrap max-w-[500px] w-[500px]">
           <NavLink to="/" className="w-[150px] h-[50px]">
