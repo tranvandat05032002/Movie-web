@@ -31,8 +31,7 @@ const MovieCardStyles = styled.div`
     );
   }
 `;
-
-const MovieCard = ({ onClick = () => {}, data, noPaddingCard }) => {
+const MovieCard = ({ onClick = () => {}, data, noPaddingCard, type = null }) => {
   return (
     <MovieCardStyles
       className={`${noPaddingCard ? "" : "ml-[40px]"} ${
@@ -48,14 +47,25 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard }) => {
             className="inline-block w-full h-full"
           />
         </div>
-        {/* <div className="flex flex-col flex-wrap content-start w-full leading-[20px] py-[10px] whitespace-normal"> */}
-
-        <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
-          {data?.original_title}
-        </h4>
-        <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
-          {data?.release_date}
-        </p>
+        {type === "cardMovie" ? (
+          <>
+            <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
+              {data?.original_title.length >= 17 ?  data?.original_title.slice(0, 17) + "...." : data?.original_title}
+            </h4>
+            <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
+              {data?.release_date}
+            </p>
+          </>
+        ) : (
+          <>
+            <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
+            {data?.name.length >= 17 ?  data?.name.slice(0, 17) + "...." : data?.name}
+            </h4>
+            <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
+              {data?.first_air_date}
+            </p>
+          </>
+        )}
       </div>
 
       <div className="flex mt-[5px] justify-between w-full items-center pt-[10px]">
@@ -94,7 +104,6 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard }) => {
         </div>
       </div>
     </MovieCardStyles>
-    // </div>
   );
 };
 

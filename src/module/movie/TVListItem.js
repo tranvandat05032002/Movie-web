@@ -4,7 +4,7 @@ import "swiper/scss";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import { useFetchAPI } from "hooks/useFetchAPI";
-import TVCard from "./TVCard";
+import MovieCard from "./MovieCard";
 // import useSWR from "swr";
 // import { fetcher } from "../../utils/config";
 const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {
@@ -45,7 +45,7 @@ const TVListItem = ({ children, watchOn, type = "", sys = "" }) => {
           {movieList.length > 0 &&
             movieList.map((item) => (
               <SwiperSlide key={item?.id}>
-                <TVCard data={item}></TVCard>
+                <MovieCard data={item}></MovieCard>
               </SwiperSlide>
             ))}
         </Swiper>
