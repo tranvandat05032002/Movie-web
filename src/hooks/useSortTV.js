@@ -6,35 +6,11 @@ import { apiKey } from "utils/config";
  * @param {*} type (optional) - type of API fetchData
  * @returns
  */
-export function useSort(type) {
+export function useSortTV(type) {
   const [movieList, setMovieList] = React.useState([]);
   const [data, setData] = React.useState();
   const [pageIndex, setPageIndex] = React.useState(1);
   const [sortType, setSortType] = React.useState("");
-  // function localeCompareCustom(a, b) {
-  //   if (a < b) {
-  //     return -1;
-  //   }
-  //   if (a > b) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // }
-  // let listTitle = [];
-  // movieList.forVal((item) => {
-  //   listTitle.push(item.original_title.slice(0, 1));
-  // });
-  // listTitle.sort((a, b) => {
-  //   const nameA = a.toUpperCase();
-  //   const nameB = b.toUpperCase();
-  //   if (nameA < nameB) {
-  //     return -1;
-  //   }
-  //   if (nameA > nameB) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
   const sortedData = React.useMemo(() => {
     let resultsData = movieList;
     if (sortType === "TitleDescending") {
@@ -80,8 +56,7 @@ export function useSort(type) {
     const fetSearchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&page=${pageIndex}
-              `
+          `https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&page=${pageIndex}`
         );
         if (response.data?.results) {
           setMovieList(response.data?.results);

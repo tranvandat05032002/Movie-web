@@ -7,6 +7,7 @@ export function useNavigation() {
     if (location.pathname === "movie") location.pathname = "";
     navigate(`${location.pathname}/${id}`);
     console.log(location.pathname);
+    console.log(id);
   };
   return {
     getURL,

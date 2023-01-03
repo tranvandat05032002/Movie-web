@@ -31,7 +31,7 @@ const MovieCardStyles = styled.div`
     );
   }
 `;
-const MovieCard = ({ onClick = () => {}, data, noPaddingCard, type = null }) => {
+const MovieCard = ({ onClick = () => {}, data, noPaddingCard, typeMovie = null }) => {
   return (
     <MovieCardStyles
       className={`${noPaddingCard ? "" : "ml-[40px]"} ${
@@ -47,7 +47,7 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard, type = null }) => 
             className="inline-block w-full h-full"
           />
         </div>
-        {type === "cardMovie" ? (
+        {typeMovie === "cardMovie" ? (
           <>
             <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
               {data?.original_title.length >= 17 ?  data?.original_title.slice(0, 17) + "...." : data?.original_title}

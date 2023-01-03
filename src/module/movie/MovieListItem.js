@@ -42,7 +42,7 @@ const MovieListItem = ({ children, watchOn, type = "", sys = "" }) => {
                 <MovieCard
                   onClick={() => navigate(`/${sys}/${item?.id}`)}
                   data={item}
-                  type = "cardMovie"
+                  typeMovie = "cardMovie"
                 ></MovieCard>
               </SwiperSlide>
             ))}

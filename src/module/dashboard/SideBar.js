@@ -9,7 +9,7 @@ import { v4 as uuidV4 } from "uuid";
 import axios from "axios";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
-import { useSort } from "hooks/useSort";
+import { useSortMovie } from "hooks/useSortMovie";
 import DashboardTitle from "./DashboardTitle";
 import { selectFilm } from "utils/const";
 import { URLImageDB } from "utils/config";
@@ -26,7 +26,7 @@ const SideBarStyles = styled.div`
   }
 `;
 const SideBar = () => {
-  const { setSortType, sortType } = useSort("popular");
+  const { setSortType, sortType } = useSortMovie("popular");
   const [listTrending, setListTrending] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(1);
   const getDataTrending = async (page) => {
@@ -53,11 +53,11 @@ const SideBar = () => {
   React.useEffect(() => {
     handleLoadMoreTrending.current();
   }, [handleLoadMoreTrending]);
-  console.log(listTrending);
+  // console.log(listTrending);
   const sortTrending = [];
   listTrending.forEach((item) => {
     // sortTrending.push(item?.original_title.slice(0, 2));
-    console.log(item?.original_title?.slice(0, 2));
+    // console.log(item?.original_title?.slice(0, 2));
     if (item?.original_title || item?.original_name) {
       sortTrending.push(
         item?.original_title?.slice(0, 1).toUpperCase() ||

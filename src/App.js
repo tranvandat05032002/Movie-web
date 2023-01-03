@@ -66,15 +66,31 @@ function App() {
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
             <Route
-              path="/movie/now-playing/:playingID"
+              path="/movie/now-playing/:movieID"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
             <Route
-              path="/movie/upcoming/:comingID"
+              path="/movie/upcoming/:movieID"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
             <Route
-              path="/movie/top-rated/:ratedID"
+              path="/movie/top-rated/:movieID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/tv/:movieID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/tv/airing-today/:movieID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/tv/on-tv/:movieID"
+              element={<MovieDetailsPage></MovieDetailsPage>}
+            ></Route>
+            <Route
+              path="/tv/top-rated/:movieID"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
           </Route>
