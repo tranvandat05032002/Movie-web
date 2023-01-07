@@ -5,11 +5,14 @@ export function useFetchAPI(sys = "", type = "") {
   const [movieList, setMovieList] = React.useState([]);
   React.useEffect(() => {
     let isApiSubscribed = true;
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
     if (isApiSubscribed) {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `https://api.themoviedb.org/3/${sys}/${type}?api_key=${apiKey}`
+            `https://api.themoviedb.org/3/${sys}/${type}?api_key=${apiKey}`,
+            { cancelToken: source.token }
           );
           if (response.data?.results) {
             setMovieList(response.data?.results);
@@ -23,6 +26,7 @@ export function useFetchAPI(sys = "", type = "") {
 
     return () => {
       isApiSubscribed = false;
+      source.cancel();
     };
   }, [type, sys]);
   return {

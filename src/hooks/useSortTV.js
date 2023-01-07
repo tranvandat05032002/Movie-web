@@ -53,10 +53,13 @@ export function useSortTV(type) {
   }, [movieList, sortType]);
 
   React.useEffect(() => {
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
     const fetSearchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&page=${pageIndex}`
+          `https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&page=${pageIndex}`,
+          { cancelToken: source.token }
         );
         if (response.data?.results) {
           setMovieList(response.data?.results);
@@ -67,6 +70,9 @@ export function useSortTV(type) {
       }
     };
     fetSearchData();
+    return () => {
+      source.cancel();
+    };
   }, [pageIndex, type]);
 
   const [pageCount, setPageCount] = React.useState(0);

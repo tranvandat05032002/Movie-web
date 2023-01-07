@@ -30,13 +30,19 @@ const SideBar = () => {
   const [listTrending, setListTrending] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(1);
   const getDataTrending = async (page) => {
+    const CancelToken = axios.CancelToken
+    const source = CancelToken.source()
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=2537abce0574afa219f72b4d7aacde04&page=${page}`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=2537abce0574afa219f72b4d7aacde04&page=${page}`,
+        {cancelToken: source.token}
       );
       return response.data?.results;
     } catch (error) {
       console.log(error.message);
+    }
+    return () => {
+      source.cancel()
     }
   };
   const handleLoadMoreTrending = React.useRef({});

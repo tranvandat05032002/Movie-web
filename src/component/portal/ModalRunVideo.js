@@ -22,10 +22,13 @@ const ModalRunVideoStyles = styled.div`
 const ModalRunVideo = ({ show, setShow, movieID }) => {
   const [trailerList, setTrailerList] = React.useState([]);
   React.useEffect(() => {
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}`
+          `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}`,
+          { cancelToken: source.token }
         );
         if (response.data?.results) {
           setTrailerList(response.data?.results);
@@ -35,6 +38,7 @@ const ModalRunVideo = ({ show, setShow, movieID }) => {
       }
     };
     fetchData();
+    source.cancel();
   }, [movieID]);
   if (typeof document === "undefined") return <div className="modal"></div>;
   if (show) {
