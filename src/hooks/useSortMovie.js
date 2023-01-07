@@ -100,7 +100,6 @@ export function useSortMovie(type) {
   const totalPage = React.useMemo(() => {
     return data?.total_results;
   }, [data?.total_results]);
-
   React.useEffect(() => {
     if (!totalPage) return;
     setPageCount(Math.ceil(totalPage / itemsPerPage));
@@ -117,6 +116,10 @@ export function useSortMovie(type) {
     setSortType,
     handlePageClick,
     pageCount,
+    setPageCount,
     movieList,
+    setPageIndex,
+    pageIndex,
+    totalPage,
   };
 }

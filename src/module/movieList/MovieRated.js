@@ -4,7 +4,10 @@ import React from "react";
 const MovieRated = () => {
   return (
     <>
-      <MenuLayoutMovie title = "Top Rated Movies" type={"top_rated"}></MenuLayoutMovie>
+      <MenuLayoutMovie
+        title="Top Rated Movies"
+        type={"top_rated"}
+      ></MenuLayoutMovie>
     </>
   );
 };

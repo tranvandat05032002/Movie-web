@@ -61,7 +61,9 @@ const Footer = () => {
         <div className="leading-[32px] flex justify-start items-end">
           <div>
             <h1>Contact</h1>
-            <a href="#banner">21T1020285@husc.edu.vn</a>
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRvwTmCdFcDPvpJBrnvnDvNzrxwXJWHrsprGFGrDdbnCxnpwxPZxhkXSflXgwSXwLctCJsQ">
+              21T1020285@husc.edu.vn
+            </a>
           </div>
         </div>
       </div>

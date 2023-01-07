@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 const BoxStyles = styled.div`
   position: absolute;
   width: 100%;
@@ -74,20 +74,20 @@ const BoxStyles = styled.div`
   }
 `;
 const Background = () => {
-    return (
-        <BoxStyles className="box">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </BoxStyles>
-    );
+  return (
+    <BoxStyles className="box">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </BoxStyles>
+  );
 };
 
 export default Background;

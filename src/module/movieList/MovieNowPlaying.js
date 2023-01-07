@@ -3,7 +3,10 @@ import React from "react";
 const MovieNowPlaying = () => {
   return (
     <>
-      <MenuLayoutMovie title = "NowPlaying Movies" type={"now_playing"}></MenuLayoutMovie>
+      <MenuLayoutMovie
+        title="NowPlaying Movies"
+        type={"now_playing"}
+      ></MenuLayoutMovie>
     </>
   );
 };

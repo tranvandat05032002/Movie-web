@@ -3,7 +3,10 @@ import React from "react";
 const MoviePopular = () => {
   return (
     <>
-      <MenuLayoutMovie title = "Popular Movies" type={"popular"}></MenuLayoutMovie>
+      <MenuLayoutMovie
+        title="Popular Movies"
+        type={"popular"}
+      ></MenuLayoutMovie>
     </>
   );
 };

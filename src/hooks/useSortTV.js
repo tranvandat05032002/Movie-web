@@ -93,5 +93,9 @@ export function useSortTV(type) {
     handlePageClick,
     pageCount,
     movieList,
+    setPageCount,
+    setPageIndex,
+    pageIndex,
+    totalPage,
   };
 }
