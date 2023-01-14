@@ -38,7 +38,10 @@ const ModalRunVideo = ({ show, setShow, movieID }) => {
       }
     };
     fetchData();
-    source.cancel();
+    //cleanUp function
+    return () => {
+      source.cancel();
+    };
   }, [movieID]);
   if (typeof document === "undefined") return <div className="modal"></div>;
   if (show) {

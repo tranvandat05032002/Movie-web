@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 const MovieDetailsStyles = styled.div`
   margin-top: var(--height-header);
@@ -7,12 +6,17 @@ const MovieDetailsStyles = styled.div`
   background-color: transparent;
 `;
 const MovieDetailsPage = () => {
-  let { movieID } = useParams();
-  console.log(movieID);
   return (
     <MovieDetailsStyles>
-      <p>{movieID}</p>
-      <div className="text-black">this is MovieDetails page</div>
+      <div>
+        <div className="left-content" id="page-info">
+          <div className="info"></div>
+          <div className="credits"></div>
+          <div className="comment"></div>
+          <div className="similar"></div>
+        </div>
+        <div className="right-content" id="sidebar"></div>
+      </div>
     </MovieDetailsStyles>
   );
 };

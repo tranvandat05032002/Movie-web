@@ -45,3 +45,26 @@ Register:
 
 Card Item
 TV: popular, top_rated, on_the-air, airing_today
+
+Page:
+-Details
+-Search
+-Credits
+.....
+
+Optimal:
+SortBy movie
+Loading: loading data, loading skeleton
+LocalStorage: ToggleShowSearch, authentication,....
+fix padding in page list movie
+Error: ErrorBoundary
+Redux: convert all data and state to redux-toolkit, redux-middleWare, redux-saga
+Finish logout
+add DarkMode function
+Change logo
+Router: nav-end
+header scroll
+portal if available
+add onClick back top and back bottom function
+data download speed
+prop types

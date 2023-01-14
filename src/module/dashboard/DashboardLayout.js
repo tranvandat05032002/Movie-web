@@ -17,7 +17,7 @@ const DashboardLayout = () => {
       <DashboardHeadingStyles>
         <Background></Background>
         <div>
-          <DashboardHeading></DashboardHeading>
+          {/* <DashboardHeading></DashboardHeading> */}
           <div className="flex">
             <SideBar></SideBar>
             <div className="w-full dashboard-children">

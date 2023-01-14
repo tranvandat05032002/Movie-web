@@ -14,6 +14,8 @@ import { AddIcon } from "component/icon/AddIcon";
 import LanguageItem from "component/menuTippy/LanguageItem";
 import Button from "component/button/Button";
 import AvatarMaterial from "component/image/AvatarMaterial";
+import SearchIcon from "component/icon/SearchIcon";
+import DashboardHeading from "module/dashboard/DashboardHeading";
 const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
@@ -28,7 +30,7 @@ const HeaderStyles = styled.header`
     }
   }
 `;
-const Header = ({ hideOnClick = false, mainRef = null }) => {
+const Header = ({ hideOnClick = false }) => {
   const { userInfo } = useAuth();
   const headerRef = React.useRef();
   React.useEffect(() => {
@@ -83,6 +85,13 @@ const Header = ({ hideOnClick = false, mainRef = null }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // }
+
+  //Show search
+  const [toggleSearch, setToggleSearch] = React.useState(false);
+  const toggleShowSearch = () => {
+    setToggleSearch(!toggleSearch);
+    console.log(toggleSearch);
+  };
   return (
     <HeaderStyles className="bg-bgPrimary" ref={headerRef}>
       <div className="container flex items-center justify-between w-full p-[34px]  max-h-3">
@@ -99,6 +108,10 @@ const Header = ({ hideOnClick = false, mainRef = null }) => {
                 item={item}
               ></MenuItem>
             ))}
+          <SearchIcon
+            className="w-[30px] h-[30px] cursor-pointer"
+            onClick={toggleShowSearch}
+          ></SearchIcon>
         </div>
         <div className="flex items-center justify-around  flex-nowrap max-w-[400px] w-[400px]">
           <Tippy
@@ -148,6 +161,11 @@ const Header = ({ hideOnClick = false, mainRef = null }) => {
           )}
         </div>
       </div>
+      <DashboardHeading
+        className={`${
+          toggleSearch ? "opacity-[1]" : "opacity-[0]"
+        } transition-all`}
+      ></DashboardHeading>
     </HeaderStyles>
   );
 };
