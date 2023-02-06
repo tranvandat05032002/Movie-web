@@ -32,7 +32,6 @@ const HeaderStyles = styled.header`
 `;
 const Header = ({ hideOnClick = false, visible }) => {
   const { userInfo } = useAuth();
-  console.log(visible);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth);
@@ -75,7 +74,6 @@ const Header = ({ hideOnClick = false, visible }) => {
   const [toggleSearch, setToggleSearch] = React.useState(false);
   const toggleShowSearch = () => {
     setToggleSearch(!toggleSearch);
-    console.log(toggleSearch);
   };
   return (
     <HeaderStyles

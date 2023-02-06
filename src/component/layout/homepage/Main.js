@@ -7,7 +7,6 @@ const Main = () => {
   const [visible, setVisible] = React.useState(true);
   React.useLayoutEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    console.log(yOffset);
     return () => window.removeEventListener("scroll", handleScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [yOffset]);
