@@ -8,11 +8,14 @@ function AuthProvider(props) {
   const [userInfo, setUserInfo] = React.useState({});
   const value = { userInfo, setUserInfo };
   React.useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserInfo(user);
       }
     });
+    return () => {
+      unsubscribed();
+    };
   }, []);
   return <AuthContext.Provider value={value} {...props}></AuthContext.Provider>;
 }
