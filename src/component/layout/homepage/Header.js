@@ -30,24 +30,9 @@ const HeaderStyles = styled.header`
     }
   }
 `;
-const Header = ({ hideOnClick = false }) => {
+const Header = ({ hideOnClick = false, visible }) => {
   const { userInfo } = useAuth();
-  const headerRef = React.useRef();
-  React.useEffect(() => {
-    const element = headerRef.current;
-    const elementHeight = headerRef.current.clientHeight;
-    const handleHiddenHeader = () => {
-      if (window.scrollY > elementHeight - 10) {
-        element.classList.add("headerTranslate");
-      } else if (window.scrollY <= elementHeight + 10) {
-        element.classList.remove("headerTranslate");
-      }
-    };
-    window.addEventListener("scroll", handleHiddenHeader);
-    return () => {
-      window.removeEventListener("scroll", handleHiddenHeader);
-    };
-  }, []);
+  console.log(visible);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth);
@@ -93,7 +78,11 @@ const Header = ({ hideOnClick = false }) => {
     console.log(toggleSearch);
   };
   return (
-    <HeaderStyles className="bg-bgPrimary" ref={headerRef}>
+    <HeaderStyles
+      className={`bg-bgPrimary ${
+        !visible && "translate-y-[-200%] transition-all"
+      }`}
+    >
       <div className="container flex items-center justify-between w-full p-[34px]  max-h-3">
         <div className="flex items-center justify-around  flex-nowrap max-w-[500px] w-[500px]">
           <NavLink to="/" className="w-[150px] h-[50px]">
@@ -162,9 +151,7 @@ const Header = ({ hideOnClick = false }) => {
         </div>
       </div>
       <DashboardHeading
-        className={`${
-          toggleSearch ? "opacity-[1]" : "opacity-[0]"
-        } transition-all`}
+        className={`${toggleSearch ? "opacity-[1]" : "hidden"} transition-all`}
       ></DashboardHeading>
     </HeaderStyles>
   );
