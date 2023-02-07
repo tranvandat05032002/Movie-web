@@ -25,25 +25,25 @@ const SideBarStyles = styled.div`
     overflow: hidden;
   }
 `;
-const SideBar = () => {
+const SideBar = ({ className }) => {
   const { setSortType, sortType } = useSortMovie("popular");
   const [listTrending, setListTrending] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(1);
   const getDataTrending = async (page) => {
-    const CancelToken = axios.CancelToken
-    const source = CancelToken.source()
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/trending/all/day?api_key=2537abce0574afa219f72b4d7aacde04&page=${page}`,
-        {cancelToken: source.token}
+        { cancelToken: source.token }
       );
       return response.data?.results;
     } catch (error) {
       console.log(error.message);
     }
     return () => {
-      source.cancel()
-    }
+      source.cancel();
+    };
   };
   const handleLoadMoreTrending = React.useRef({});
   handleLoadMoreTrending.current = async () => {
@@ -77,7 +77,9 @@ const SideBar = () => {
   //   const povot = arr[pivotIndex];
   // };
   return (
-    <SideBarStyles className="text-black w-[240px] min-w-[240px] text-start">
+    <SideBarStyles
+      className={`text-black w-[240px] min-w-[240px] text-start ${className}`}
+    >
       {/* <h1 className="text-[1.5rem] mb-[5px]">Movie Trending</h1> */}
       <DashboardTitle title="Trending Movies"></DashboardTitle>
       <Box sx={{ minWidth: 120 }} className="mb-[20px]">

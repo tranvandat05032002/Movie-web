@@ -5,6 +5,8 @@ const BoxStyles = styled.div`
   width: 100%;
   height: 100%;
   background-color: transparent;
+  left: 0px;
+  top: 0px;
   div {
     position: absolute;
     width: 60px;

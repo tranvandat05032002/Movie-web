@@ -47,10 +47,26 @@ Card Item
 TV: popular, top_rated, on_the-air, airing_today
 
 Page:
--Details
--Search
--Credits
-.....
+-Details:
+
+- Image //
+- title //
+- status //
+- cong ty san xuat //
+- Diễn viên(name) //
+- Quốc gia //
+- Năm sản xuất //
+- Đánh giá (10) //
+- thời lượng // (Runtime)
+- Thể loại //
+- Button (watch trailer and watch film //
+- Description //
+- Từ khóa //
+- phim có liên quan or quan tâm //
+  -Search
+  -Credits
+  .....
+  -page: phổ biến film right //
 
 Optimal:
 SortBy movie
@@ -68,3 +84,5 @@ portal if available
 add onClick back top and back bottom function
 data download speed
 prop types
+nprogress
+code spliting (react.lazy)

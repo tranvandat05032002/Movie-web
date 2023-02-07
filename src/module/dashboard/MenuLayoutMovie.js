@@ -6,9 +6,7 @@ import { useSortMovie } from "hooks/useSortMovie";
 import MovieCard from "module/movie/MovieCard";
 import styled from "styled-components";
 import DashboardTitle from "./DashboardTitle";
-const MenuLayoutMovieStyles = styled.div`
-  margin-left: 35px;
-`;
+const MenuLayoutMovieStyles = styled.div``;
 const MenuLayoutMovie = ({ title = "No title", type }) => {
   const {
     sortedData,
@@ -21,9 +19,9 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
   const itemRender = (_, type, originalElement) => {
     switch (type) {
       case "prev":
-        return <a href="#">Previous</a>;
+        return <p>Previous</p>;
       case "next":
-        return <a href="#">Next</a>;
+        return <p>Next</p>;
       default:
         return originalElement;
     }
@@ -43,7 +41,7 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
         title="Sort Movies By"
       ></SelectMaterial>
       <div className="w-full">
-        <div className="grid grid-cols-5 gap-x-[18px] gap-y-[10px] w-full">
+        <div className="grid grid-cols-5 gap-y-[10px] w-full">
           {sortedData &&
             sortedData.length > 0 &&
             sortedData

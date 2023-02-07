@@ -31,11 +31,16 @@ const MovieCardStyles = styled.div`
     );
   }
 `;
-const MovieCard = ({ onClick = () => {}, data, noPaddingCard, typeMovie = null }) => {
+const MovieCard = ({
+  onClick = () => {},
+  data,
+  noPaddingCard,
+  typeMovie = null,
+}) => {
   return (
     <MovieCardStyles
-      className={`${noPaddingCard ? "" : "ml-[40px]"} ${
-        noPaddingCard ? "w-[176px] min-w-[176px]" : "w-[170px] min-w-[170px] "
+      className={`${noPaddingCard ? "" : "ml-[35px]"} ${
+        noPaddingCard ? "w-[170px] min-w-[170px]" : "w-[170px] min-w-[170px] "
       }`}
       onClick={() => onClick(data.id)}
     >
@@ -50,7 +55,9 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard, typeMovie = null }
         {typeMovie === "cardMovie" ? (
           <>
             <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
-              {data?.original_title.length >= 17 ?  data?.original_title.slice(0, 17) + "...." : data?.original_title}
+              {data?.original_title.length >= 17
+                ? data?.original_title.slice(0, 17) + "...."
+                : data?.original_title}
             </h4>
             <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
               {data?.release_date}
@@ -59,7 +66,9 @@ const MovieCard = ({ onClick = () => {}, data, noPaddingCard, typeMovie = null }
         ) : (
           <>
             <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
-            {data?.name.length >= 17 ?  data?.name.slice(0, 17) + "...." : data?.name}
+              {data?.name.length >= 17
+                ? data?.name.slice(0, 17) + "...."
+                : data?.name}
             </h4>
             <p className="text-[rgba(0,0,0,0.6)] text-[18px] mt-[2px]">
               {data?.first_air_date}

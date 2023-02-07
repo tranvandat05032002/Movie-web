@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import DashboardHeading from "./DashboardHeading";
 import { InputProvider } from "context/input-context";
 import Background from "component/animated/Background";
 import SideBar from "./SideBar";
@@ -10,6 +9,7 @@ const DashboardHeadingStyles = styled.div`
   padding: 30px 40px;
   background-color: transparent;
   position: relative;
+  overflow-x: hidden;
 `;
 const DashboardLayout = () => {
   return (
@@ -17,12 +17,11 @@ const DashboardLayout = () => {
       <DashboardHeadingStyles>
         <Background></Background>
         <div>
-          {/* <DashboardHeading></DashboardHeading> */}
           <div className="flex">
-            <SideBar></SideBar>
             <div className="w-full dashboard-children">
               <Outlet></Outlet>
             </div>
+            <SideBar></SideBar>
           </div>
         </div>
       </DashboardHeadingStyles>

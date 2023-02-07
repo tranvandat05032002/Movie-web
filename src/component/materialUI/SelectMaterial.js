@@ -8,7 +8,7 @@ import { selectFilm } from "utils/const";
 
 const SelectMaterial = ({ setSortType, sortType, title }) => {
   return (
-    <Box sx={{ minWidth: 120 }} className="mb-[20px]">
+    <Box sx={{ minWidth: 120 }} className="mb-[20px] w-[98.4%]">
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{title}</InputLabel>
         <Select

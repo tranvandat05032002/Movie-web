@@ -49,6 +49,20 @@ const ButtonStyles = styled.button`
     opacity: 0.5;
     pointer-events: none;
   }
+  ${(prop) =>
+    prop.kind === "buttonTrailer" &&
+    css`
+      background-image: linear-gradient(
+        to right,
+        ${(prop) => prop.theme.inputActive},
+        ${(prop) => prop.theme.colorGoogleBlue}
+      );
+      color: white;
+      border-radius: 10px;
+      width: 120px;
+      padding: 7px 10px;
+      font-weight: 500;
+    `}
 `;
 
 const Button = ({

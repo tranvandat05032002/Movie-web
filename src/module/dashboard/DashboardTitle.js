@@ -22,7 +22,7 @@ const DashboardTitleStyles = styled.div`
 `;
 const DashboardTitle = ({ title = "" }) => {
   return (
-    <div className="text-[25.6px] w-[400px] font-semibold text-start">
+    <div className="text-[25.6px] font-semibold text-start">
       <DashboardTitleStyles>{title}</DashboardTitleStyles>
     </div>
   );

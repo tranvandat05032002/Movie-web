@@ -34,7 +34,7 @@ const TVCardStyles = styled.div`
 
 const TVCard = ({ data }) => {
   return (
-    <TVCardStyles className="ml-[40px] w-[170px] min-w-[170px]">
+    <TVCardStyles className="ml-[35px] w-[170px] min-w-[170px]">
       <div className="max-h-[290px] h-[290px] leading-[20px]">
         <div className="min-h-[calc(150px*1.5)] h-[calc(150px*1.5)] bg-[#dbdbdb] overflow-hidden w-full rounded-lg shadow">
           <img

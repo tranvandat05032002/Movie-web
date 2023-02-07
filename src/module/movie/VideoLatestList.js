@@ -43,7 +43,7 @@ const VideoLatestList = ({ children, watchOn, sys, type }) => {
   return (
     <>
       <VideoLatestListStyles className="w-full pt-[30px] relative z-10">
-        <ImageStyles className="absolute top-0 bottom-0 left-0 right-0 image z-0] object-cover">
+        <ImageStyles className="absolute top-0 bottom-0 left-0 right-0 z-0 object-cover">
           <img
             className="object-cover w-full h-full"
             src={`${

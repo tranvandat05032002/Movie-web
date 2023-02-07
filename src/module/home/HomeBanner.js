@@ -5,7 +5,7 @@ const BannerStyles = styled.div`
   min-height: 350px;
   max-height: 350px;
   height: 350px;
-  margin-top: var(--height-header);
+  /* margin-top: var(--height-header); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("https://images.unsplash.com/photo-1611526114392-8d8e229f511d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2651&q=80");
   background-size: cover;
