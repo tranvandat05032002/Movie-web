@@ -6,8 +6,14 @@ import { Pagination } from "swiper";
 import { useNavigate } from "react-router-dom";
 import { useFetchAPI } from "hooks/useFetchAPI";
 import MovieCard from "./MovieCard";
-const MovieListItem = ({ children, watchOn, type = "", sys = "" }) => {
-  const { movieList } = useFetchAPI(sys, type);
+const MovieListItem = ({
+  children,
+  watchOn,
+  type = "",
+  sys = "",
+  id = null,
+}) => {
+  const { movieList } = useFetchAPI(sys, type, id);
   const navigate = useNavigate();
   return (
     <div className="w-full pt-[30px]">
@@ -42,7 +48,7 @@ const MovieListItem = ({ children, watchOn, type = "", sys = "" }) => {
                 <MovieCard
                   onClick={() => navigate(`/${sys}/${item?.id}`)}
                   data={item}
-                  typeMovie = "cardMovie"
+                  typeMovie="cardMovie"
                 ></MovieCard>
               </SwiperSlide>
             ))}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { apiKey } from "utils/config";
-export function useFetchAPI(sys = "", type = "") {
+export function useFetchAPI(sys = "", type = "", id = "") {
   const [movieList, setMovieList] = React.useState([]);
   React.useEffect(() => {
     let isApiSubscribed = true;
@@ -11,7 +11,9 @@ export function useFetchAPI(sys = "", type = "") {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `https://api.themoviedb.org/3/${sys}/${type}?api_key=${apiKey}`,
+            `https://api.themoviedb.org/3/${sys}/${
+              id ? id + "/" + type : type
+            }?api_key=${apiKey}`,
             { cancelToken: source.token }
           );
           if (response.data?.results) {
@@ -28,7 +30,7 @@ export function useFetchAPI(sys = "", type = "") {
       isApiSubscribed = false;
       source.cancel();
     };
-  }, [type, sys]);
+  }, [type, sys, id]);
   return {
     movieList,
   };

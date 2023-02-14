@@ -10,6 +10,7 @@ import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { URLImageDB } from "utils/config";
 import SideBar from "module/dashboard/SideBar";
+import MovieListItem from "module/movie/MovieListItem";
 const MovieDetailsStyles = styled.div`
   margin-top: var(--height-header);
   padding: 30px 40px;
@@ -59,6 +60,9 @@ const MovieDetailsPage = () => {
     };
     fetchDataCast();
   }, [params]);
+  /**
+   *
+   */
   console.log(infoCast);
   return (
     <>
@@ -191,20 +195,6 @@ const MovieDetailsPage = () => {
                           </span>
                         ))}
                     </li>
-                    {/* <li className="font-[700]">
-                      Tập phim:{" "}
-                      <div className="flex">
-                        <div className="p-[2px] border border-[#81cff5] rounded cursor-pointer ml-1 w-[25px] h-[25px] text-center flex justify-center items-center max-w-[30px]">
-                          1
-                        </div>
-                        <div className="p-[2px] border border-[#81cff5] rounded cursor-pointer ml-1 w-[25px] h-[25px] text-center flex justify-center items-center max-w-[30px]">
-                          2
-                        </div>
-                        <div className="p-[2px] border border-[#81cff5] rounded cursor-pointer ml-1 w-[25px] h-[25px] text-center flex justify-center items-center max-w-[30px]">
-                          3
-                        </div>
-                      </div>
-                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -214,10 +204,7 @@ const MovieDetailsPage = () => {
             <h2 className="uppercase font-medium text-[25px] text-[#333]">
               Top Billed Cast
             </h2>
-            <div
-              id="list-credits"
-              // className="max-h-[290px] h-[290px] border border-red-500 flex justify-between items-center"
-            >
+            <div id="list-credits">
               <Swiper
                 grabCursor={"true"}
                 spaceBetween={60}
@@ -266,20 +253,36 @@ const MovieDetailsPage = () => {
               {infoDetails?.overview}
             </p>
           </div>
-          <div id="comment"></div>
+          <div id="comment">
+            <h2 className="uppercase font-medium text-[25px] text-[#333] border-b leading-7 border-gray-300">
+              Comments
+            </h2>
+            <div id="content-comment debug-css"></div>
+            {/* <div
+              className="fb-comments"
+              data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+              data-width=""
+              data-numposts="5"
+            ></div> */}
+          </div>
         </div>
-        <div
-          className="relative border border-green-500 right-content w-max"
-          id="sidebar"
-        >
+        <div className="relative right-content w-max" id="sidebar">
           <SideBar className="mt-[-10px]"></SideBar>
         </div>
       </MovieDetailsStyles>
-      {/* <div id="similar">
-        <MovieListItem watchOn={"Movies"} sys="movie" type="now_playing">
+      <div id="similar">
+        {/* <MovieListItem watchOn={"Movies"} sys="movie" type="now_playing">
+          Similar
+        </MovieListItem> */}
+        <MovieListItem
+          watchOn={"On Tv"}
+          id={params}
+          sys={"movie"}
+          type={"similar"}
+        >
           Similar
         </MovieListItem>
-      </div> */}
+      </div>
     </>
   );
 };
