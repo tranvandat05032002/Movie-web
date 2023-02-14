@@ -11,9 +11,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { URLImageDB } from "utils/config";
 import SideBar from "module/dashboard/SideBar";
 import MovieListItem from "module/movie/MovieListItem";
+import { Avatar } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import Comments from "component/Comment/Comments";
 const MovieDetailsStyles = styled.div`
   margin-top: var(--height-header);
-  padding: 30px 40px;
+  padding: 30px 40px 5px 40px;
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -253,17 +257,18 @@ const MovieDetailsPage = () => {
               {infoDetails?.overview}
             </p>
           </div>
-          <div id="comment">
+          <div id="comments">
             <h2 className="uppercase font-medium text-[25px] text-[#333] border-b leading-7 border-gray-300">
               Comments
             </h2>
-            <div id="content-comment debug-css"></div>
+            {/*Facebook developer commnets*/}
             {/* <div
               className="fb-comments"
               data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
               data-width=""
               data-numposts="5"
             ></div> */}
+            <Comments></Comments>
           </div>
         </div>
         <div className="relative right-content w-max" id="sidebar">
