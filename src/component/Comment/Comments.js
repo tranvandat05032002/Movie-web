@@ -32,6 +32,14 @@ const Comments = () => {
           className="py-[20px] pr-[10px] text-[#333] max-h-[685px] overflow-y-auto"
         >
           <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
+          <ItemComment></ItemComment>
         </div>
       </div>
     </div>

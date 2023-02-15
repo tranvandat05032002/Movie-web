@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, v4 } from "uuid";
 import axios from "axios";
 import { Button } from "component";
 import Background from "component/animated/Background";
@@ -11,9 +11,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { URLImageDB } from "utils/config";
 import SideBar from "module/dashboard/SideBar";
 import MovieListItem from "module/movie/MovieListItem";
-import { Avatar } from "antd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import Comments from "component/Comment/Comments";
 const MovieDetailsStyles = styled.div`
   margin-top: var(--height-header);
@@ -31,6 +28,7 @@ const MovieDetailsPage = () => {
   //fetchData
   const [infoDetails, setInfoDetails] = React.useState([]);
   const [infoCast, setInfoCast] = React.useState([]);
+  const [keywords, setKeywords] = React.useState([]);
 
   React.useEffect(() => {
     const fetchDataDetailsMovie = async () => {
@@ -64,10 +62,27 @@ const MovieDetailsPage = () => {
     };
     fetchDataCast();
   }, [params]);
+
+  React.useEffect(() => {
+    const fetchKeywords = async () => {
+      try {
+        const response = await axios.request({
+          method: "GET",
+          url: `https://api.themoviedb.org/3/movie/${params}/keywords?api_key=2537abce0574afa219f72b4d7aacde04`,
+        });
+        if (response?.data?.keywords) {
+          setKeywords(response?.data?.keywords);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchKeywords();
+  }, [params]);
   /**
    *
    */
-  console.log(infoCast);
+  console.log(keywords);
   return (
     <>
       <MovieDetailsStyles>
@@ -262,9 +277,15 @@ const MovieDetailsPage = () => {
               Từ Khóa
             </h2>
             <div className="mt-[10px] flex flex-wrap gap-[3px]">
-              <p className="text-colorDetails text-[15px] px-[7px] py-[3px] bg-[#333] rounded-[6px] w-max">
-                #Peaky water
-              </p>
+              {keywords.length > 0 &&
+                keywords.map((keyword) => (
+                  <p
+                    key={v4()}
+                    className="text-colorDetails text-[15px] px-[7px] py-[3px] bg-[#333] rounded-[6px] w-max"
+                  >
+                    #{keyword?.name}
+                  </p>
+                ))}
             </div>
           </div>
           <div id="comments">
