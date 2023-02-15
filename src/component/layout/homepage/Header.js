@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "context/auth-context";
+import { AuthContext, useAuth } from "context/auth-context";
 import { signOut } from "firebase/auth";
 import { auth } from "firebase-app/firebase-config";
 import { dataCategory, dataItem } from "utils/const";
@@ -31,11 +31,10 @@ const HeaderStyles = styled.header`
   }
 `;
 const Header = ({ hideOnClick = false, visible }) => {
-  const { userInfo } = useAuth();
+  const { user } = React.useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/sign-in");
   };
   const handleSignIn = () => {
     navigate("/sign-in");
@@ -44,32 +43,11 @@ const Header = ({ hideOnClick = false, visible }) => {
     navigate("/sign-up");
   };
   const handleJoin = async () => {
-    if (userInfo && Object.keys(userInfo).length !== 0) {
+    if (user && Object.keys(user).length !== 0) {
       signOut(auth);
       navigate("/sign-up");
     }
   };
-  React.useEffect(() => {
-    if (userInfo && Object.keys(userInfo).length !== 0) {
-      setTimeout(() => {
-        Swal.fire({
-          position: "top-between",
-          icon: "success",
-          title: `Welcome ${
-            userInfo?.displayName
-              ? userInfo.displayName.toLowerCase()
-              : "".replace(/(^|\s)\S/g, (l) => l.toUpperCase())
-          }! 
-            Your work has been saved`,
-          showConfirmButton: false,
-          timer: 6000,
-        });
-      }, 500);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // }
-
   //Show search
   const [toggleSearch, setToggleSearch] = React.useState(false);
   const toggleShowSearch = () => {
@@ -118,7 +96,7 @@ const Header = ({ hideOnClick = false, visible }) => {
               <LanguageItem key={uuidv4()} item={item}></LanguageItem>
             ))}
           <button onClick={handleJoin}>join TMDB</button>
-          {!userInfo?.email ? (
+          {!user?.email ? (
             <>
               <Button
                 to="/sign-in"
@@ -138,11 +116,11 @@ const Header = ({ hideOnClick = false, visible }) => {
               </Button>
             </>
           )}
-          {Object.keys(userInfo).length !== 0 && (
+          {Object.keys(user).length !== 0 && (
             <>
               <AvatarMaterial
-                title={userInfo?.photoURl}
-                url={userInfo?.photoURL}
+                title={user?.photoURl}
+                url={user?.photoURL}
               ></AvatarMaterial>
             </>
           )}

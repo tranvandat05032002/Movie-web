@@ -1,29 +1,57 @@
 import { auth } from "firebase-app/firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
-import React, { createContext } from "react";
-
-const AuthContext = createContext();
-
-function AuthProvider(props) {
-  const [userInfo, setUserInfo] = React.useState({});
-  const value = { userInfo, setUserInfo };
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { LoadingSniper } from "component";
+import Swal from "sweetalert2";
+export const AuthContext = React.createContext();
+export default function AuthProvider({ children }) {
+  //logic
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
-    const unsubscribed = onAuthStateChanged(auth, (user) => {
+    const unsubscribed = auth.onAuthStateChanged((user) => {
       if (user) {
-        setUserInfo(user);
+        const { displayName, photoURL, uid, email } = user;
+        setUser({
+          displayName,
+          photoURL,
+          uid,
+          email,
+        });
+        if (user.providerData[0].providerId === "password") {
+          navigate("/sign-in");
+          setLoading(false);
+          return;
+        }
+        setTimeout(() => {
+          Swal.fire({
+            position: "top-between",
+            icon: "success",
+            title: `Welcome ${
+              user?.displayName
+                ? user.displayName.toLowerCase()
+                : "".replace(/(^|\s)\S/g, (l) => l.toUpperCase())
+            }!
+                    Your work has been saved`,
+            showConfirmButton: false,
+            timer: 6000,
+          });
+        }, 500);
+        navigate("/");
+        setLoading(false);
+        return;
       }
+      setLoading(false);
+      navigate("/Sign-In");
     });
     return () => {
       unsubscribed();
     };
   }, []);
-  return <AuthContext.Provider value={value} {...props}></AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user }}>
+      {loading ? <LoadingSniper></LoadingSniper> : children}
+    </AuthContext.Provider>
+  );
 }
-
-function useAuth() {
-  const context = React.useContext(AuthContext);
-  if (typeof context === "undefined")
-    throw new Error("useAuth must be used within AuthProvider");
-  return context;
-}
-export { AuthProvider, useAuth };

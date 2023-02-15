@@ -1,4 +1,3 @@
-import { AuthProvider } from "./context/auth-context";
 import { Route, Routes } from "react-router-dom";
 import ForgotPassword from "pages/ForgotPassword";
 import { HomePage, PageNotFound, SignIn, SignUp } from "pages";
@@ -13,6 +12,7 @@ import TVAiringToday from "module/tvList/TVAiringToday";
 import TVMovieOnTV from "module/tvList/TVMovieOnTV";
 import TVMovieTopRated from "module/tvList/TVMovieTopRated";
 import MovieDetailsPage from "pages/MovieDetailsPage";
+import AuthProvider from "context/auth-context";
 function App() {
   return (
     <div className="App">

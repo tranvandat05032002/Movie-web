@@ -257,6 +257,16 @@ const MovieDetailsPage = () => {
               {infoDetails?.overview}
             </p>
           </div>
+          <div id="overview" className="m-[15px] mt-[0px] ml-0">
+            <h2 className="uppercase font-medium text-[25px] text-[#333] border-b leading-7 border-gray-300">
+              Từ Khóa
+            </h2>
+            <div className="mt-[10px] flex flex-wrap gap-[3px]">
+              <p className="text-colorDetails text-[15px] px-[7px] py-[3px] bg-[#333] rounded-[6px] w-max">
+                #Peaky water
+              </p>
+            </div>
+          </div>
           <div id="comments">
             <h2 className="uppercase font-medium text-[25px] text-[#333] border-b leading-7 border-gray-300">
               Comments

@@ -49,6 +49,7 @@ const SignUp = () => {
   });
   const handleCreateUser = async (values) => {
     if (!isValid) return;
+    // navigate("/sign-in")
     try {
       await createUserWithEmailAndPassword(auth, values.email, values.password);
       await updateProfile(auth.currentUser, {
@@ -79,9 +80,6 @@ const SignUp = () => {
         email: "",
         password: "",
       });
-      setTimeout(() => {
-        navigate("/sign-in");
-      }, 1000);
     } catch (error) {
       toast.error(error.message, {
         pauseOnHover: true,

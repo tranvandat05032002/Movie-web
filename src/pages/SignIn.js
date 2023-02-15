@@ -12,7 +12,6 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import Swal from "sweetalert2";
-import { useAuth } from "context/auth-context";
 import { auth } from "firebase-app/firebase-config";
 import {
   Button,
@@ -23,7 +22,6 @@ import {
   InputPassword,
   Label,
 } from "component";
-
 const SignIn = () => {
   const validateScheme = yup.object({
     email: yup
@@ -38,35 +36,36 @@ const SignIn = () => {
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting, isValid, errors },
+    formState: { isSubmitting, isValid },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(validateScheme),
   });
-  const { userInfo } = useAuth();
-  console.log("🚀 ~ file: SignIn.js ~ line 48 ~ SignIn ~ userInfo", userInfo);
   const navigate = useNavigate();
-  React.useEffect(() => {
-    document.title = "Login";
-  }, []);
-  React.useEffect(() => {
-    const arrayErrors = Object.values(errors);
-    if (arrayErrors.length > 0) {
-      toast.error(arrayErrors[0]?.message, {
-        pauseOnHover: false,
-        delay: 0,
-      });
-    }
-  }, [errors]);
   const handleSignIn = async (values) => {
     if (!isValid) return;
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       navigate("/");
+      toast.success("Login successfully!!!", {
+        pauseOnHover: false,
+      });
+      setTimeout(() => {
+        Swal.fire({
+          position: "top-between",
+          icon: "success",
+          title: `Welcome ${
+            values?.fullName
+              ? values.fullName.toLowerCase()
+              : "".replace(/(^|\s)\S/g, (l) => l.toUpperCase())
+          }! 
+                  Your work has been saved`,
+          showConfirmButton: false,
+          timer: 6000,
+        });
+      }, 500);
     } catch (error) {
-      // toast.error(error.message);
       Swal.fire({
-        // title: "Your account or password is incorrect",
         text: "Your account or password is incorrect, please re-enter",
         icon: "error",
         confirmButtonColor: "#3085d6",
@@ -78,7 +77,6 @@ const SignIn = () => {
     try {
       const provider = new FacebookAuthProvider();
       await signInWithPopup(auth, provider);
-      navigate("/");
       toast.success("Login successfully!", {
         pauseOnHover: false,
       });
@@ -91,7 +89,6 @@ const SignIn = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      navigate("/");
       toast.success("Login successfully!", {
         pauseOnHover: false,
       });
