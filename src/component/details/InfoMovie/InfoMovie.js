@@ -1,14 +1,11 @@
-import Button from "component/button/Button";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { URLImageDB } from "utils/config";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Comments from "../Comment/Comments";
-import { Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import useGetDataAPI from "../../../hooks/useGetDataAPI";
 import Overview from "../Overview/Overview";
+import InfoCast from "../InfoCast/InfoCast";
 
 const InfoMovie = ({ setTrailerVisible }) => {
   const [infoCast, setInfoCast] = React.useState([]);
@@ -50,52 +47,11 @@ const InfoMovie = ({ setTrailerVisible }) => {
   }, [params]);
   return (
     <div className="left-content w-[calc(75%+55px)] p-[15px]" id="page-info">
-      <Overview setTrailerVisible = {setTrailerVisible} infoCast = {infoCast}></Overview>
-      <div id="credits" className="m-[15px] mt-[0px] mr-0 ml-0 pt-[8px]">
-        <h2 className="uppercase font-medium text-[25px] text-[#333]">
-          Top Billed Cast
-        </h2>
-        <div id="list-credits">
-          <Swiper
-            grabCursor={"true"}
-            spaceBetween={60}
-            slidesPerView={5}
-            pagination={{
-              dynamicBullets: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
-            {infoCast.length > 0 &&
-              infoCast.map((item) => (
-                <SwiperSlide key={uuidv4()}>
-                  <div
-                    id="items-credits"
-                    className="w-[160px] mr-[7px] h-[255px] rounded-md flex flex-col border border-lightGrey bg-white overflow-hidden"
-                  >
-                    <div className="h-[165px]">
-                      <img
-                        className="object-cover object-center w-full h-full"
-                        src={`${URLImageDB + item?.profile_path}`}
-                        alt=""
-                      />
-                    </div>
-                    <div className="p-[10px] text-colorDetails leading-5 pt-[10px]">
-                      <h5 className="font-bold text-[16px] w-full break-normal overflow-hidden">
-                        {item?.name && item.name.length > 10
-                          ? item.name.slice(0, 10) + "..."
-                          : item.name}
-                      </h5>
-                      <p className="text-[14.4px] text-[#333]">
-                        {item?.known_for_department}
-                      </p>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        </div>
-      </div>
+      <Overview
+        setTrailerVisible={setTrailerVisible}
+        infoCast={infoCast}
+      ></Overview>
+      <InfoCast></InfoCast>
       <div id="overview" className="m-[15px] mt-[0px] ml-0">
         <h2 className="uppercase font-medium text-[25px] text-[#333] border-b leading-7 border-gray-300">
           Nội Dung Phim

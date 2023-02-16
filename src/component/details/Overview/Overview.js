@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Overview = ({ setTrailerVisible, infoCast }) => {
   const params = useParams().movieID;
-  const { movieList: infoDetails } = useGetDataAPi("movie", "", "", "", params);
+  const { dataMovie: infoDetails } = useGetDataAPi("movie", "", "", "", params);
   return (
     <div
       className="max-h-[325px] h-[325px] p-[5px] z-20 overflow-hidden relative before:content-[''] before:absolute before:w-full before:h-full before:bg-backgroundBefore before:top-0 before:bottom-0 before:left-0 before:right-0 before:z-[-1]"
@@ -17,7 +17,9 @@ const Overview = ({ setTrailerVisible, infoCast }) => {
       <div className="absolute top-0 bottom-0 left-0 right-0 z-[-2]">
         <img
           className="object-cover w-full h-full"
-          src={`${URLImageDB + infoDetails?.backdrop_path}`}
+          src={`${
+            infoDetails.backdrop_path && URLImageDB + infoDetails?.backdrop_path
+          }`}
           alt=""
         />
       </div>
@@ -30,7 +32,9 @@ const Overview = ({ setTrailerVisible, infoCast }) => {
           <div className="w-full h-full overflow-hidden rounded-[5px]">
             <img
               className="object-cover w-full h-full"
-              src={`${URLImageDB + infoDetails?.poster_path}`}
+              src={`${
+                infoDetails.poster_path && URLImageDB + infoDetails?.poster_path
+              }`}
               alt=""
             />
           </div>

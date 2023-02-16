@@ -5,16 +5,14 @@ export default function useFetDataAPI(
   side,
   type,
   language,
-  typeResult,
   params,
   typeDetails
 ) {
-  const [movieList, setMovieList] = React.useState([]);
+  const [dataMovie, setDataMovie] = React.useState([]);
   /**
    * @params side (String)
    * @params type (string)
    * @params language(string)
-   * @params typeResult(String)
    * @params params(Number)
    * @params typeDetails(String)
    * @returns getDataAPI
@@ -37,11 +35,7 @@ export default function useFetDataAPI(
           { cancelToken: source.token }
         );
         if (response?.data) {
-          if (typeResult) {
-            setMovieList(response?.data?.typeResult);
-          } else {
-            setMovieList(response?.data);
-          }
+          setDataMovie(response?.data);
         }
       } catch (error) {
         console.log(error.message);
@@ -49,11 +43,11 @@ export default function useFetDataAPI(
     };
     fetchData();
     return () => {
-      setMovieList([]);
+      setDataMovie([])
       source.cancel();
     };
-  }, [side, params]);
+  }, [side, params, typeDetails]);
   return {
-    movieList,
+    dataMovie,
   };
 }

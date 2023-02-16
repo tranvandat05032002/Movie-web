@@ -112,7 +112,7 @@ const SideBar = ({ className }) => {
               >
                 <div className="w-[40px] h-[40px] mr-[5px]">
                   <img
-                    src={`${URLImageDB + item.poster_path}`}
+                    src={`${item.poster_path && URLImageDB + item.poster_path}`}
                     alt=""
                     className="object-cover w-full h-full"
                   />
