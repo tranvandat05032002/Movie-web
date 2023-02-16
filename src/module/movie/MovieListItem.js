@@ -12,13 +12,16 @@ const MovieListItem = ({
   type = "",
   sys = "",
   id = null,
+  className,
 }) => {
   const { movieList } = useFetchAPI(sys, type, id);
   const navigate = useNavigate();
   return (
     <div className="w-full pt-[30px]">
       <div className="flex items-center pl-[30px]">
-        <h2 className="font-semibold text-[1.5rem] mr-[25px]">{children}</h2>
+        <h2 className={`font-semibold text-[1.5rem] mr-[25px] ${className}`}>
+          {children}
+        </h2>
         <div className="max-h-[40px] h-[40px] border-[2px] rounded-[100px] border-bgPrimary">
           <ul className="flex justify-start items-start text-[20px] h-full">
             <li

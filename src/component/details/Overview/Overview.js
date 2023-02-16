@@ -1,13 +1,16 @@
 import React from "react";
 import { URLImageDB } from "utils/config";
 import useGetDataAPi from "hooks/useGetDataAPI";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "component/button/Button";
 import { v4 as uuidv4 } from "uuid";
 
-const Overview = ({ setTrailerVisible, infoCast }) => {
-  const params = useParams().movieID;
+const Overview = ({ setTrailerVisible, infoCast, params }) => {
   const { dataMovie: infoDetails } = useGetDataAPi("movie", "", "", "", params);
+  const navigate = useNavigate();
+  const handleWatchMovie = () => {
+    navigate(`/movie/${params}/watch=${"#"}`);
+  };
   return (
     <div
       className="max-h-[325px] h-[325px] p-[5px] z-20 overflow-hidden relative before:content-[''] before:absolute before:w-full before:h-full before:bg-backgroundBefore before:top-0 before:bottom-0 before:left-0 before:right-0 before:z-[-1]"
@@ -41,12 +44,16 @@ const Overview = ({ setTrailerVisible, infoCast }) => {
           <div className="absolute bottom-0 flex justify-center w-full">
             <Button
               kind="buttonTrailer"
-              className="mr-[10px]"
+              className="mr-[10px] cursor-pointer"
               onClick={() => setTrailerVisible(true)}
             >
               Trailer
             </Button>
-            <Button kind="buttonTrailer" className="">
+            <Button
+              kind="buttonTrailer"
+              className="cursor-pointer"
+              onClick={handleWatchMovie}
+            >
               Watch Movie
             </Button>
           </div>
@@ -60,7 +67,7 @@ const Overview = ({ setTrailerVisible, infoCast }) => {
             className="text-[15px] font-[200] text-[#cacaca]"
             id="description"
           >
-            <ul className="leading-[22px]">
+            <ul className="leading-[26px]">
               <div className="uppercase text-[#afafaf] font-bold">
                 {infoDetails.release_date
                   ? infoDetails?.original_title +
@@ -99,7 +106,8 @@ const Overview = ({ setTrailerVisible, infoCast }) => {
               <li className="font-[700]">
                 Diễn viên:{" "}
                 <span className="font-medium text-colorDetails">
-                  {infoCast.length > 0 &&
+                  {infoCast &&
+                    infoCast.length > 0 &&
                     infoCast
                       .slice(0, 16)
                       .map((item) =>

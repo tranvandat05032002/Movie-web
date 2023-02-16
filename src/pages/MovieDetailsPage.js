@@ -35,6 +35,7 @@ const MovieDetailsPage = () => {
           id={params}
           sys={"movie"}
           type={"similar"}
+          className="text-[#333]"
         >
           Similar
         </MovieListItem>
