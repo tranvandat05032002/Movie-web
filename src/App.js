@@ -13,6 +13,8 @@ import TVMovieOnTV from "module/tvList/TVMovieOnTV";
 import TVMovieTopRated from "module/tvList/TVMovieTopRated";
 import MovieDetailsPage from "pages/MovieDetailsPage";
 import AuthProvider from "context/auth-context";
+import PageNotVideoMovie from "pages/PageNotVideoMovie";
+import SearchPage from "component/search/SearchPage";
 function App() {
   return (
     <div className="App">
@@ -93,7 +95,16 @@ function App() {
               path="/tv/top-rated/:movieID"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
+            <Route path="/search" element={<SearchPage></SearchPage>}></Route>
           </Route>
+          <Route
+            path="/movie/:movieID/watch=/*"
+            element={<PageNotVideoMovie></PageNotVideoMovie>}
+          ></Route>
+          <Route
+            path="/tv/:movieID/watch=/*"
+            element={<PageNotVideoMovie></PageNotVideoMovie>}
+          ></Route>
         </Routes>
       </AuthProvider>
     </div>

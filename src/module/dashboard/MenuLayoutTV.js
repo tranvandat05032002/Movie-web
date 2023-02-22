@@ -5,6 +5,7 @@ import { useSortTV } from "hooks/useSortTV";
 import MovieCard from "module/movie/MovieCard";
 import React from "react";
 import styled from "styled-components";
+import { side } from "utils/config";
 import DashboardTitle from "./DashboardTitle";
 const MenuLayoutTVStyles = styled.div`
   /* margin-left: 35px; */
@@ -54,6 +55,7 @@ const MenuLayoutTV = ({ title = "No title", type }) => {
                   onClick={getURL}
                   key={item.id}
                   data={item}
+                  sys={side.TV}
                 ></MovieCard>
               ))}
         </div>

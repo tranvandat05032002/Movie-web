@@ -1,11 +1,10 @@
 import React from "react";
-import { side } from "utils/config";
 import TitleDetails from "../TitleDetails";
 import useGetDataAPI from "hooks/useGetDataAPI";
 
-const Description = ({ params }) => {
+const Description = ({ params, side }) => {
   const { dataMovie: infoDetails } = useGetDataAPI(
-    side.movie,
+    side,
     "",
     "",
     "",

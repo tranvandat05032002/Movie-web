@@ -31,12 +31,7 @@ const MovieCardStyles = styled.div`
     );
   }
 `;
-const MovieCard = ({
-  onClick = () => {},
-  data,
-  noPaddingCard,
-  typeMovie = null,
-}) => {
+const MovieCard = ({ onClick = () => {}, data, noPaddingCard, sys }) => {
   return (
     <MovieCardStyles
       className={`${noPaddingCard ? "" : "ml-[35px]"} ${
@@ -52,10 +47,10 @@ const MovieCard = ({
             className="inline-block w-full h-full"
           />
         </div>
-        {typeMovie === "cardMovie" ? (
+        {sys !== "tv" && data ? (
           <>
             <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
-              {data?.original_title.length >= 17
+              {data?.original_title?.length >= 17
                 ? data?.original_title.slice(0, 17) + "...."
                 : data?.original_title}
             </h4>
@@ -65,8 +60,8 @@ const MovieCard = ({
           </>
         ) : (
           <>
-            <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px]">
-              {data?.name.length >= 17
+            <h4 className="text-[18px] text-[#09192a] font-semibold mt-[2px] ">
+              {data?.name?.length >= 17
                 ? data?.name.slice(0, 17) + "...."
                 : data?.name}
             </h4>
@@ -85,22 +80,22 @@ const MovieCard = ({
           ></FontAwesomeIcon>
           {data?.vote_average >= 0 && data?.vote_average < 5 && (
             <span className={`font-semibold text-red-500`}>
-              {data?.vote_average}
+              {Math.round(data?.vote_average * 10) / 10}
             </span>
           )}
           {data?.vote_average >= 5 && data?.vote_average < 6.5 && (
             <span className={`font-semibold text-orange-500`}>
-              {data?.vote_average}
+              {Math.round(data?.vote_average * 10) / 10}
             </span>
           )}
           {data?.vote_average >= 6.5 && data?.vote_average < 8 && (
             <span className={`font-semibold text-blue-500`}>
-              {data?.vote_average}
+              {Math.round(data?.vote_average * 10) / 10}
             </span>
           )}
           {data?.vote_average >= 8 && data?.vote_average <= 10 && (
             <span className={`font-semibold text-green-500`}>
-              {data?.vote_average}
+              {Math.round(data?.vote_average * 10) / 10}
             </span>
           )}
         </div>

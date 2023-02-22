@@ -45,13 +45,14 @@ const MovieListItem = ({
           modules={[Pagination]}
           className="mySwiper"
         >
-          {movieList.length > 0 &&
+          {movieList &&
+            movieList.length > 0 &&
             movieList.map((item) => (
               <SwiperSlide key={item?.id}>
                 <MovieCard
+                  sys={sys}
                   onClick={() => navigate(`/${sys}/${item?.id}`)}
                   data={item}
-                  typeMovie="cardMovie"
                 ></MovieCard>
               </SwiperSlide>
             ))}

@@ -48,7 +48,6 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
               .slice(0, pageSize)
               .map((item) => (
                 <MovieCard
-                  typeMovie="cardMovie"
                   key={item.id}
                   noPaddingCard
                   onClick={getURL}

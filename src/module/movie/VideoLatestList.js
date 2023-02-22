@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import styled from "styled-components";
 import { useFetchAPI } from "hooks/useFetchAPI";
-import { URLImageDB } from "utils/config";
+import { side, URLImageDB } from "utils/config";
 import VideoLatestCard from "./VideoLatestCard";
 import ModalRunVideo from "component/portal/ModalRunVideo";
 const VideoLatestListStyles = styled.div`
@@ -100,6 +100,7 @@ const VideoLatestList = ({ children, watchOn, sys, type }) => {
           show={show}
           setShow={setShow}
           movieID={movieID}
+          side={side.movie}
         ></ModalRunVideo>
       )}
     </>

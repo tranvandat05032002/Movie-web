@@ -1,11 +1,12 @@
 import Background from "component/animated/Background";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import SideBar from "module/dashboard/SideBar";
 import MovieListItem from "module/movie/MovieListItem";
 import ModalRunVideo from "component/portal/ModalRunVideo";
 import InfoMovie from "component/details/InfoMovie/InfoMovie";
+import { side } from "utils/config";
 const MovieDetailsStyles = styled.div`
   margin-top: var(--height-header);
   padding: 30px 40px 5px 40px;
@@ -20,20 +21,25 @@ const MovieDetailsStyles = styled.div`
 const MovieDetailsPage = () => {
   const params = useParams().movieID;
   const [trailerVisible, setTrailerVisible] = React.useState(false);
+  const location = useLocation();
+  const sideURL = location.pathname.slice(1, 3) === "tv" ? side.TV : side.movie;
   return (
     <>
       <MovieDetailsStyles>
         <Background></Background>
-        <InfoMovie setTrailerVisible={setTrailerVisible}></InfoMovie>
+        <InfoMovie
+          setTrailerVisible={setTrailerVisible}
+          side={sideURL}
+        ></InfoMovie>
         <div className="relative right-content w-max" id="sidebar">
-          <SideBar className="mt-[-10px]"></SideBar>
+          <SideBar className="mt-[-10px]" side={side}></SideBar>
         </div>
       </MovieDetailsStyles>
       <div id="similar">
         <MovieListItem
-          watchOn={"On Movie"}
+          watchOn={`${sideURL === "tv" ? "On TV" : "On Movie"}`}
           id={params}
-          sys={"movie"}
+          sys={`${sideURL === "tv" ? "tv" : "movie"}`}
           type={"similar"}
           className="text-[#333]"
         >
@@ -46,6 +52,7 @@ const MovieDetailsPage = () => {
           show={trailerVisible}
           movieID={params}
           setShow={setTrailerVisible}
+          side={sideURL !== "tv" ? side.movie : sideURL}
         ></ModalRunVideo>
       )}
     </>

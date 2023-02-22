@@ -1,12 +1,21 @@
 import React from "react";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { side, URLImageDB } from "utils/config";
+import { URLImageDB } from "utils/config";
 import useGetDataAPI from "hooks/useGetDataAPI";
 import { v4 as uuidV4 } from "uuid";
-const ItemCast = ({ params }) => {
-  const { dataMovie } = useGetDataAPI(side.movie, "", "", params, "credits");
-  const { cast: infoCast } = dataMovie;
+const ItemCast = ({ params, side }) => {
+  const { dataMovie } = useGetDataAPI(side, "", "", params, "credits");
+  const { cast: infoCast, crew: infoCastCrew } = dataMovie;
+  const [listCast, setListCast] = React.useState([]);
+  React.useEffect(() => {
+    if (infoCast?.length > infoCastCrew?.length) {
+      setListCast(infoCast);
+    } else {
+      setListCast(infoCastCrew);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [infoCast, infoCastCrew, listCast]);
   return (
     <Swiper
       grabCursor={"true"}
@@ -18,9 +27,9 @@ const ItemCast = ({ params }) => {
       modules={[Pagination]}
       className="mySwiper"
     >
-      {infoCast &&
-        infoCast.length > 0 &&
-        infoCast?.map((cast) => (
+      {dataMovie &&
+        listCast?.length > 0 &&
+        listCast?.map((cast) => (
           <SwiperSlide key={uuidV4()}>
             <div
               id="items-credits"
@@ -30,7 +39,7 @@ const ItemCast = ({ params }) => {
                 <img
                   className="object-cover object-center w-full h-full"
                   src={`${
-                    cast?.profile_path && URLImageDB + cast?.profile_path
+                   ( cast?.profile_path && URLImageDB + cast?.profile_path) || "http://thso2bacly.donghoi.edu.vn/App/images/no-image-news.png"
                   }`}
                   alt=""
                 />

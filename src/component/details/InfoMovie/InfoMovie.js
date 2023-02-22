@@ -10,9 +10,9 @@ import { side } from "utils/config";
 import Description from "../Overview/Description";
 import Keyword from "../Keywords/Keyword";
 
-const InfoMovie = ({ setTrailerVisible }) => {
+const InfoMovie = ({ setTrailerVisible, side }) => {
   const params = useParams().movieID;
-  const { dataMovie } = useGetDataAPI(side.movie, "", "", params, "credits");
+  const { dataMovie } = useGetDataAPI(side, "", "", params, "credits");
   const { cast: infoCast } = dataMovie;
   return (
     <div className="left-content w-[calc(75%+55px)] p-[15px]" id="page-info">
@@ -20,14 +20,15 @@ const InfoMovie = ({ setTrailerVisible }) => {
         setTrailerVisible={setTrailerVisible}
         infoCast={infoCast}
         params={params}
+        side = {side}
       ></Overview>
       <div id="cast">
-        <InfoCast params={params}></InfoCast>
+        <InfoCast side = {side} params={params}></InfoCast>
       </div>
-      <Description params={params}></Description>
+      <Description params={params} side = {side}></Description>
 
       <div id="overview" className="m-[15px] mt-[0px] ml-0">
-        <Keyword params={params}></Keyword>
+        <Keyword params={params} side = {side}></Keyword>
       </div>
       <div id="comments">
         {/*Facebook developer commnets*/}

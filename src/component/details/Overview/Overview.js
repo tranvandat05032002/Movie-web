@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "component/button/Button";
 import { v4 as uuidv4 } from "uuid";
 
-const Overview = ({ setTrailerVisible, infoCast, params }) => {
-  const { dataMovie: infoDetails } = useGetDataAPi("movie", "", "", "", params);
+const Overview = ({ setTrailerVisible, infoCast, params, side }) => {
+  const { dataMovie: infoDetails } = useGetDataAPi(side, "", "", "", params);
   const navigate = useNavigate();
   const handleWatchMovie = () => {
     navigate(`/movie/${params}/watch=${"#"}`);
@@ -61,7 +61,7 @@ const Overview = ({ setTrailerVisible, infoCast, params }) => {
         </div>
         <div className="pl-[20px] w-[785px] overflow-hidden" id="info-right">
           <h2 className="text-[28px]" id="title">
-            {infoDetails?.original_title}
+            {infoDetails?.original_title || infoDetails?.name}
           </h2>
           <div
             className="text-[15px] font-[200] text-[#cacaca]"
@@ -69,10 +69,23 @@ const Overview = ({ setTrailerVisible, infoCast, params }) => {
           >
             <ul className="leading-[26px]">
               <div className="uppercase text-[#afafaf] font-bold">
-                {infoDetails.release_date
+                {/* {infoDetails.release_date
                   ? infoDetails?.original_title +
                     " (" +
                     infoDetails?.release_date.slice(0, 4) +
+                    ")"
+                  : ""} */}
+                {side !== "tv"
+                  ? infoDetails.release_date
+                    ? infoDetails?.original_title +
+                      " (" +
+                      infoDetails?.release_date.slice(0, 4) +
+                      ")"
+                    : ""
+                  : infoDetails.first_air_date
+                  ? infoDetails?.name +
+                    " (" +
+                    infoDetails?.first_air_date.slice(0, 4) +
                     ")"
                   : ""}
               </div>
@@ -120,10 +133,10 @@ const Overview = ({ setTrailerVisible, infoCast, params }) => {
               <li className="font-[700]">
                 Ngày phát hành:{" "}
                 <span className="font-medium text-colorDetails">
-                  {infoDetails.release_date &&
-                    new Date(infoDetails?.release_date).toLocaleDateString(
-                      "vi-VN"
-                    )}
+                  {(infoDetails.release_date || infoDetails?.first_air_date) &&
+                    new Date(
+                      infoDetails?.release_date || infoDetails?.first_air_date
+                    ).toLocaleDateString("vi-VN")}
                 </span>
               </li>
               <li className="font-[700]">
