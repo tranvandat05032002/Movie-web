@@ -6,9 +6,14 @@ export default function useFetDataAPI(
   type,
   language,
   params,
-  typeDetails
+  typeDetails,
+  get,
+  date,
+  typeSearch,
+  queryDebounce = ""
 ) {
   const [dataMovie, setDataMovie] = React.useState([]);
+  const [loadingFetch, setLoadingFetch] = React.useState(true);
   /**
    * @params side (String)
    * @params type (string)
@@ -22,32 +27,42 @@ export default function useFetDataAPI(
     const source = CancelToken.source();
     const fetchData = async () => {
       try {
+        setLoadingFetch(true);
         const response = await axios.request(
           {
             method: "GET",
-            url: `https://api.themoviedb.org/3/${side}/${params ? params : ""}${
-              typeDetails ? "/" + typeDetails : ""
+            url: `https://api.themoviedb.org/3/${side ? side + "/" : ""}${
+              params ? params + "/" : ""
+            }${typeDetails ? typeDetails : ""}${get ? "/" + get + "/" : ""}${
+              date ? date : ""
+            }${
+              typeSearch ? typeSearch : ""
             }?api_key=2537abce0574afa219f72b4d7aacde04&language=en-US`,
             params: {
-              query: "",
+              query: queryDebounce,
             },
           },
           { cancelToken: source.token }
         );
+        setLoadingFetch(false);
         if (response?.data) {
           setDataMovie(response?.data);
+          setLoadingFetch(false);
         }
       } catch (error) {
         console.log(error.message);
+        setLoadingFetch(false);
       }
     };
     fetchData();
     return () => {
-      setDataMovie([])
+      console.log("cleaned");
+      setDataMovie([]);
       source.cancel();
     };
-  }, [side, params, typeDetails]);
+  }, [side, params, typeDetails, get, date, typeSearch, queryDebounce]);
   return {
     dataMovie,
+    loadingFetch,
   };
 }

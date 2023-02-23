@@ -1,11 +1,10 @@
-import Tippy from "@tippyjs/react";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
+import TippyLayout from "component/Tippy/TippyLayout";
 
 const LanguageItem = ({ item }) => {
   return (
-    <Tippy
-      trigger="click"
+    <TippyLayout
       content={
         <div className=" text-black bg-white max-w-[350px] w-[241px] py-[5px] rounded-[4px]">
           <h2 className="text-[19px] font-bold mb-2 px-[8px]">
@@ -22,7 +21,7 @@ const LanguageItem = ({ item }) => {
       <span className="px-1 rounded-[5px] border border-white cursor-pointer hover:text-black hover:bg-white">
         {item.title}
       </span>
-    </Tippy>
+    </TippyLayout>
   );
 };
 

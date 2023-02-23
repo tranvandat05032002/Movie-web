@@ -95,7 +95,7 @@ function App() {
               path="/tv/top-rated/:movieID"
               element={<MovieDetailsPage></MovieDetailsPage>}
             ></Route>
-            <Route path="/search" element={<SearchPage></SearchPage>}></Route>
+            <Route path="/search/movie" element={<SearchPage></SearchPage>}></Route>
           </Route>
           <Route
             path="/movie/:movieID/watch=/*"

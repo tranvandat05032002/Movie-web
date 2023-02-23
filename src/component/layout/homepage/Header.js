@@ -15,7 +15,9 @@ import LanguageItem from "component/menuTippy/LanguageItem";
 import Button from "component/button/Button";
 import AvatarMaterial from "component/image/AvatarMaterial";
 import SearchIcon from "component/icon/SearchIcon";
-import DashboardHeading from "module/dashboard/DashboardHeading";
+import SearchInput from "module/dashboard/SearchInput";
+import TippyLayout from "component/Tippy/TippyLayout";
+import { CloseIconSVG } from "component/icon/SVG";
 const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
@@ -73,23 +75,31 @@ const Header = ({ hideOnClick = false, visible }) => {
                 item={item}
               ></MenuItem>
             ))}
-          <SearchIcon
-            className="w-[30px] h-[30px] cursor-pointer"
-            onClick={toggleShowSearch}
-          ></SearchIcon>
+          {toggleSearch ? (
+            <CloseIconSVG
+              width={30}
+              height={30}
+              className={"cursor-pointer"}
+              onClick={toggleShowSearch}
+            ></CloseIconSVG>
+          ) : (
+            <SearchIcon
+              className="w-[30px] h-[30px] cursor-pointer"
+              onClick={toggleShowSearch}
+            ></SearchIcon>
+          )}
         </div>
         <div className="flex items-center justify-around  flex-nowrap max-w-[400px] w-[400px]">
-          <Tippy
-            content="Can't find a movie or TV show? Login to create it."
+          <TippyLayout
+            content={"Can't find a movie or TV show? Login to create it."}
             placement="bottom"
-            trigger="click"
             delay={[0, 200]}
             maxWidth="200px"
           >
             <div className="w-[30px] h-[30px]">
               <img src={AddIcon} className="w-full h-full" alt="" />
             </div>
-          </Tippy>
+          </TippyLayout>
 
           {dataItem.length > 0 &&
             dataItem.map((item) => (
@@ -126,9 +136,11 @@ const Header = ({ hideOnClick = false, visible }) => {
           )}
         </div>
       </div>
-      <DashboardHeading
+      <SearchInput
+        hiddenButton={false}
         className={`${toggleSearch ? "opacity-[1]" : "hidden"} transition-all`}
-      ></DashboardHeading>
+        setToggleSearch={setToggleSearch}
+      ></SearchInput>
     </HeaderStyles>
   );
 };

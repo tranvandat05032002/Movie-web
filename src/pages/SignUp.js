@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AuthenticationPage from "./AuthenticationPage";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithCredential, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import slugify from "slugify";
@@ -51,7 +51,7 @@ const SignUp = () => {
     if (!isValid) return;
     // navigate("/sign-in")
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
+       await createUserWithEmailAndPassword(auth, values.email, values.password);
       await updateProfile(auth.currentUser, {
         displayName: values.fullName,
         photoURL:

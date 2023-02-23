@@ -174,3 +174,7 @@ body {
 .debug-css {
   border: 1px solid red;
 }
+
+.inputItalic::placeholder {
+  font-style: italic;
+}

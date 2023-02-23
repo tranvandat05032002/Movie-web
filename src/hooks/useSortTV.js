@@ -19,7 +19,6 @@ export function useSortTV(type) {
           .toString(a.original_title.length)
           .localeCompare(b.original_title.toString(a.original_title.length));
       });
-      console.log(resultsData);
     } else if (sortType === "TitleAscending") {
       resultsData = [...movieList].sort(function (a, b) {
         return b.original_title.localeCompare(a.original_title);

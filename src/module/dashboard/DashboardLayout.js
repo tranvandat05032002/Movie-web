@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { InputProvider } from "context/input-context";
 import Background from "component/animated/Background";
 import SideBar from "./SideBar";
-const DashboardHeadingStyles = styled.div`
+const SearchInputStyles = styled.div`
   margin-top: var(--height-header);
   padding: 30px 40px;
   background-color: transparent;
@@ -14,7 +14,7 @@ const DashboardHeadingStyles = styled.div`
 const DashboardLayout = () => {
   return (
     <InputProvider>
-      <DashboardHeadingStyles>
+      <SearchInputStyles>
         <Background></Background>
         <div>
           <div className="flex">
@@ -24,7 +24,7 @@ const DashboardLayout = () => {
             <SideBar></SideBar>
           </div>
         </div>
-      </DashboardHeadingStyles>
+      </SearchInputStyles>
     </InputProvider>
   );
 };
