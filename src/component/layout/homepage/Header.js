@@ -18,6 +18,7 @@ import SearchIcon from "component/icon/SearchIcon";
 import SearchInput from "module/dashboard/SearchInput";
 import TippyLayout from "component/Tippy/TippyLayout";
 import { CloseIconSVG } from "component/icon/SVG";
+import { SearchContext } from "context/search-context";
 const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
@@ -50,8 +51,7 @@ const Header = ({ hideOnClick = false, visible }) => {
       navigate("/sign-up");
     }
   };
-  //Show search
-  const [toggleSearch, setToggleSearch] = React.useState(false);
+  const {toggleSearch, setToggleSearch} = React.useContext(SearchContext)
   const toggleShowSearch = () => {
     setToggleSearch(!toggleSearch);
   };
@@ -139,7 +139,6 @@ const Header = ({ hideOnClick = false, visible }) => {
       <SearchInput
         hiddenButton={false}
         className={`${toggleSearch ? "opacity-[1]" : "hidden"} transition-all`}
-        setToggleSearch={setToggleSearch}
       ></SearchInput>
     </HeaderStyles>
   );

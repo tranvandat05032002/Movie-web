@@ -1,9 +1,9 @@
 import React from "react";
 import SearchItemLayout from "./SearchItemLayout";
 
-const SearchItemDefault = ({ trending, setToggleSearch }) => {
+const SearchItemDefault = ({ trending }) => {
   return (
-    <SearchItemLayout setToggleSearch = {setToggleSearch}>
+    <SearchItemLayout>
       {trending?.original_title ||
         trending?.title ||
         trending?.name ||

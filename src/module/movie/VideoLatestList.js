@@ -59,7 +59,7 @@ const VideoLatestList = ({ children, watchOn, sys, type }) => {
           <div className="max-h-[40px] h-[40px] border-[2px] rounded-[100px] border-transparent">
             <ul className="flex justify-start items-start text-[20px] h-full">
               <li
-                className={`font-semibold active py-[4px] h-full rounded-[100px] text-center px-[20px] w-full`}
+                className={`font-semibold activeList py-[4px] h-full rounded-[100px] text-center px-[20px] w-full`}
               >
                 <span className="">{watchOn}</span>
               </li>

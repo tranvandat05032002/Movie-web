@@ -119,7 +119,7 @@ body {
   padding: 5px 8px;
 }
 
-.active {
+.activeList {
   background-color: #032541;
   color: #a2f7c8;
 }
@@ -177,4 +177,13 @@ body {
 
 .inputItalic::placeholder {
   font-style: italic;
+}
+.searchActive {
+  li {
+    background-color: #ebebeb;
+    font-weight: 500;
+    p {
+      background-color: white;
+    }
+  }
 }

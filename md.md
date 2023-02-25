@@ -86,3 +86,6 @@ data download speed
 prop types
 nprogress
 code spliting (react.lazy)
+
+// after finished redux:
+fix render file: search-context, useSearch, SearchItemLayout

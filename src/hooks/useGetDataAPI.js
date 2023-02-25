@@ -56,7 +56,6 @@ export default function useFetDataAPI(
     };
     fetchData();
     return () => {
-      console.log("cleaned");
       setDataMovie([]);
       source.cancel();
     };

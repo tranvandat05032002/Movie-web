@@ -31,6 +31,13 @@ const MovieCardStyles = styled.div`
     );
   }
 `;
+
+/**
+ * 
+ * @param {String} sys pass a type of movie
+ * @param {List} data get data from useGetDataAPI after then passing it to data  
+ * @returns 
+ */
 const MovieCard = ({ onClick = () => {}, data, noPaddingCard, sys }) => {
   return (
     <MovieCardStyles

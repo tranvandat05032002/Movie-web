@@ -1,9 +1,9 @@
 import React from "react";
 import SearchItemLayout from "./SearchItemLayout";
 
-const SearchItem = ({ movieSearch, setToggleSearch }) => {
+const SearchItem = ({ movieSearch }) => {
   return (
-    <SearchItemLayout setToggleSearch = {setToggleSearch}>
+    <SearchItemLayout>
       {movieSearch?.original_title ||
         movieSearch?.title ||
         movieSearch?.name ||

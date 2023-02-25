@@ -27,11 +27,8 @@ const ButtonStyles = styled.button`
     color: black;
   }
 `;
-const SearchInput = ({ className, hiddenButton, setToggleSearch }) => {
+const SearchInput = ({ className, hiddenButton }) => {
   const [searchFilter, setSearchFilter] = React.useState("");
-  const {
-    dataMovie: { results: trendingMovie },
-  } = useGetDataAPI("", "", "", "", "trending", "all", "day");
   const debounceValue = useDebounce(searchFilter, 500);
   const handleChangeFilter = (e) => {
     if (e.target.value.startsWith(" ")) {
@@ -41,8 +38,11 @@ const SearchInput = ({ className, hiddenButton, setToggleSearch }) => {
     }
   };
   const handleResetValue = () => {
-    setSearchFilter("")
-  }
+    setSearchFilter("");
+  };
+  const {
+    dataMovie: { results: trendingMovie },
+  } = useGetDataAPI("", "", "", "", "trending", "all", "day");
   const {
     dataMovie: { results: searchMovie },
     loadingFetch,
@@ -70,7 +70,12 @@ const SearchInput = ({ className, hiddenButton, setToggleSearch }) => {
                   color="#acacac"
                 ></LoadingSniper>
               ) : (
-                <CloseIconSVG width={20} height={20} className = "cursor-pointer" onClick = {handleResetValue}/>
+                <CloseIconSVG
+                  width={20}
+                  height={20}
+                  className="cursor-pointer"
+                  onClick={handleResetValue}
+                />
               )}
             </div>
             {hiddenButton ? (
@@ -97,7 +102,6 @@ const SearchInput = ({ className, hiddenButton, setToggleSearch }) => {
                       <SearchItemDefault
                         key={uuidV4()}
                         trending={trending}
-                        setToggleSearch = {setToggleSearch}
                       ></SearchItemDefault>
                     ))
                 : searchMovie &&
@@ -108,7 +112,6 @@ const SearchInput = ({ className, hiddenButton, setToggleSearch }) => {
                       <SearchItem
                         key={uuidV4()}
                         movieSearch={movieSearch}
-                        setToggleSearch = {setToggleSearch}
                       ></SearchItem>
                     ))}
             </ul>
