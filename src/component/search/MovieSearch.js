@@ -1,16 +1,16 @@
-import { SearchContext } from "context/search-context";
 import useSearch from "hooks/useSearch";
-import MovieCard from "module/movie/MovieCard";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const MovieSearch = () => {
-  //   const { searchResults } = React.useContext(SearchContext);
-  //   console.log(searchResults);
   const { searchResults } = useSearch();
-//   console.log("searchResults:", searchResults);
   return (
     <div className="debug-css">
-      <div>{/* <MovieCard ></MovieCard> */}</div>
+      {searchResults &&
+        searchResults.length > 0 &&
+        searchResults.map((movieSearch) => (
+          <div key={uuidv4()}>{movieSearch.original_title}</div>
+        ))}
     </div>
   );
 };

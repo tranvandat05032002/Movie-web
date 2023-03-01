@@ -1,21 +1,15 @@
 import axios from "axios";
 import { SearchContext } from "context/search-context";
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { apiKey } from "utils/config";
 
-export default function useSearch() {
-  //   const navigate = useNavigate();
-  const { querySearch, setQuerySearch, setToggleSearch } =
+function useSearch() {
+  const { querySearch, setQuerySearch, pathNameLocal } =
     React.useContext(SearchContext);
   const [searchResults, setSearchResults] = React.useState([]);
-  const navigate = useNavigate();
-  const handleGetValueSearch = (e) => {
-    setToggleSearch(false);
-    navigate(`/search/movie?query=${e.target.innerText}`);
-  };
+
   const location = useLocation();
-  console.log(querySearch);
   React.useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const query = searchParams.get("query");
@@ -27,7 +21,7 @@ export default function useSearch() {
         const response = await axios.request(
           {
             method: "GET",
-            url: `https://api.themoviedb.org/3${"/search/movie"}?api_key=${apiKey}&language=en-US&include_adult=false`,
+            url: `https://api.themoviedb.org/3${pathNameLocal}?api_key=${apiKey}&language=en-US&include_adult=false`,
             params: {
               query: querySearch,
               page: 1,
@@ -46,15 +40,15 @@ export default function useSearch() {
 
     return () => {
       console.log("cleaned");
-      setSearchResults([]);
       source.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search, location.pathname]);
+  }, [location.search, querySearch, pathNameLocal]);
+  console.log(searchResults);
   return {
     location,
-    handleGetValueSearch,
     querySearch,
     searchResults,
   };
 }
+export default useSearch;
