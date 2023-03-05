@@ -14,10 +14,10 @@ import TVMovieTopRated from "module/tvList/TVMovieTopRated";
 import MovieDetailsPage from "pages/MovieDetailsPage";
 import AuthProvider from "context/auth-context";
 import PageNotVideoMovie from "pages/PageNotVideoMovie";
-import SearchPage from "component/search/SearchPage";
-import MovieSearch from "component/search/MovieSearch";
-import TVSearch from "component/search/TVSearch";
-import CollectionSearch from "component/search/CollectionSearch";
+import SearchPage from "component/search/LayoutResultsSearch/SearchPage";
+import MovieSearch from "component/search/OutletPageSearch/MovieSearch";
+import TVSearch from "component/search/OutletPageSearch/TVSearch";
+import CollectionSearch from "component/search/OutletPageSearch/CollectionSearch";
 import SearchProvider from "context/search-context";
 function App() {
   return (

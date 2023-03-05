@@ -9,8 +9,8 @@ import {
 import useDebounce from "hooks/useDebounce";
 import React from "react";
 import styled from "styled-components";
-import SearchItemDefault from "component/search/SearchItemDefault";
-import SearchItem from "component/search/SearchItem";
+import SearchItemDefault from "component/search/ComponentSearchResults/SearchItemDefault";
+import SearchItem from "component/search/ComponentSearchResults/SearchItem";
 const ButtonStyles = styled.button`
   position: absolute;
   content: "";
@@ -56,7 +56,7 @@ const SearchInput = ({ className, hiddenButton }) => {
               type="text"
               placeholder="Search for a movie, tv show, person......"
               value={searchFilter}
-              className="inputItalic flex-1 text-[#333] pl-[85px] pr-[40px]  py-[10px] h-[46px] focus:outline-none border-gray-300 border-[1px]"
+              className="inputItalic italic flex-1 text-[#7e7e7e] pl-[85px] pr-[40px]  py-[10px] h-[46px] focus:outline-none border-gray-300 border-[1px]"
               onChange={handleChangeFilter}
             />
             <div className=" absolute left-[45px] top-[50%] translate-y-[-50%] text-[#000000] ml-[3px]">

@@ -18,7 +18,7 @@ const SearchItemLayout = ({ children }) => {
   return (
     <li
       onClick={handleGetValueSearch}
-      className="flex py-[5px] pl-[50px] pr-10  border-y-[0.5px] cursor-pointer border-[#dfdfdf] hover:bg-[#f0f0f0]"
+      className="flex py-[5px] debug-css pl-[50px] pr-10  border-y-[0.5px] cursor-pointer border-[#dfdfdf] hover:bg-[#f0f0f0]"
     >
       <span className="mr-[10px]">
         <SearchIconSVG width={18} height={18}></SearchIconSVG>

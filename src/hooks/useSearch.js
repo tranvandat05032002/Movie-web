@@ -7,7 +7,10 @@ import { apiKey } from "utils/config";
 function useSearch() {
   const { querySearch, setQuerySearch, pathNameLocal } =
     React.useContext(SearchContext);
-  const [searchResults, setSearchResults] = React.useState([]);
+  const [searchResults, setSearchResults] = React.useState({
+    listResults: [],
+    total_results: 0,
+  });
 
   const location = useLocation();
   React.useEffect(() => {
@@ -30,7 +33,10 @@ function useSearch() {
           { cancelToken: source.token }
         );
         if (response?.data) {
-          setSearchResults(response?.data?.results);
+          setSearchResults({
+            listResults: response?.data?.results,
+            total_results: response?.data?.total_results,
+          });
         }
       } catch (error) {
         console.log(error.message);

@@ -2,13 +2,14 @@ import useSearch from "hooks/useSearch";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const CollectionSearch = () => {
+const TVSearch = () => {
   const { searchResults } = useSearch();
+  const { listResults } = searchResults;
   return (
     <div className="debug-css">
-      {searchResults &&
-        searchResults.length > 0 &&
-        searchResults.map((movieSearch) => (
+      {listResults &&
+        listResults.length > 0 &&
+        listResults.map((movieSearch) => (
           <div key={uuidv4()}>
             {movieSearch.original_title || movieSearch.name}
           </div>
@@ -17,4 +18,4 @@ const CollectionSearch = () => {
   );
 };
 
-export default CollectionSearch;
+export default TVSearch;

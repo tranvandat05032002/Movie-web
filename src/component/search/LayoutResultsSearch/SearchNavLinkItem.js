@@ -7,7 +7,6 @@ const SearchNavLinkItem = ({ to = "/search/movie", children, total }) => {
   const handleGetPathName = () => {
     setPathNameLocal(to);
   };
-  console.log("re-render");
   return (
     <NavLink
       className={({ isActive }) => (isActive ? "searchActive" : "")}
@@ -19,7 +18,7 @@ const SearchNavLinkItem = ({ to = "/search/movie", children, total }) => {
         <span>{children}</span>
         <div>
           {" "}
-          <p className="max-w-[100px] font-thin rounded-[20px] bg-grayebebeb text-center px-[7px] group-hover:bg-white">
+          <p className="max-w-[100px] font-thin rounded-[20px] invisible bg-grayebebeb text-center px-[7px] group-hover:bg-white">
             {total}
           </p>{" "}
         </div>

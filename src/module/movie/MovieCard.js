@@ -33,17 +33,17 @@ const MovieCardStyles = styled.div`
 `;
 
 /**
- * 
+ *
  * @param {String} sys pass a type of movie
- * @param {List} data get data from useGetDataAPI after then passing it to data  
- * @returns 
+ * @param {List} data get data from useGetDataAPI after then passing it to data
+ * @returns
  */
 const MovieCard = ({ onClick = () => {}, data, noPaddingCard, sys }) => {
   return (
     <MovieCardStyles
       className={`${noPaddingCard ? "" : "ml-[35px]"} ${
         noPaddingCard ? "w-[170px] min-w-[170px]" : "w-[170px] min-w-[170px] "
-      }`}
+      } shadow-item`}
       onClick={() => onClick(data.id)}
     >
       <div className="max-h-[290px] h-[290px] leading-[20px]">
