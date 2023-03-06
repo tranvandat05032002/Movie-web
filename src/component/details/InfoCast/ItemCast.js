@@ -1,7 +1,7 @@
 import React from "react";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { URLImageDB } from "utils/config";
+import { URLImageDB, URLImageError } from "utils/config";
 import useGetDataAPI from "hooks/useGetDataAPI";
 import { v4 as uuidV4 } from "uuid";
 const ItemCast = ({ params, side }) => {
@@ -39,7 +39,8 @@ const ItemCast = ({ params, side }) => {
                 <img
                   className="object-cover object-center w-full h-full"
                   src={`${
-                   ( cast?.profile_path && URLImageDB + cast?.profile_path) || "http://thso2bacly.donghoi.edu.vn/App/images/no-image-news.png"
+                    (cast?.profile_path && URLImageDB + cast?.profile_path) ||
+                    URLImageError
                   }`}
                   alt=""
                 />

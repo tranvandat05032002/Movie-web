@@ -4,6 +4,7 @@ export default function SearchProvider({ children }) {
   const [toggleSearch, setToggleSearch] = React.useState(false);
   const [querySearch, setQuerySearch] = React.useState("");
   const [pathNameLocal, setPathNameLocal] = React.useState("");
+  const [dataLoadMore, setDataLoadMore] = React.useState([]);
   return (
     <SearchContext.Provider
       value={{
@@ -13,6 +14,7 @@ export default function SearchProvider({ children }) {
         setQuerySearch,
         pathNameLocal,
         setPathNameLocal,
+        dataLoadMore, setDataLoadMore
       }}
     >
       {children}
