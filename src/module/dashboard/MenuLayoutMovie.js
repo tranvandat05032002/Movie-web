@@ -6,7 +6,7 @@ import { useSortMovie } from "hooks/useSortMovie";
 import MovieCard from "module/movie/MovieCard";
 import styled from "styled-components";
 import DashboardTitle from "./DashboardTitle";
-import CardSkeleton from "component/Skeleton/CardSkeleton";
+import ListItemSkeleton from "component/loading/Skeleton/ListItemSkeleton";
 const MenuLayoutMovieStyles = styled.div``;
 const MenuLayoutMovie = ({ title = "No title", type }) => {
   const {
@@ -43,20 +43,24 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
         title="Sort Movies By"
       ></SelectMaterial>
       <div className="w-full">
-       {fetching ? <div className="grid grid-cols-5 gap-y-[10px] w-full">
-          {sortedData &&
-            sortedData.length > 0 &&
-            sortedData
-              .slice(0, pageSize)
-              .map((item) => (
-                <MovieCard
-                  key={item.id}
-                  noPaddingCard
-                  onClick={getURL}
-                  data={item}
-                ></MovieCard>
-              ))}
-        </div> : <CardSkeleton></CardSkeleton>}
+        {!fetching ? (
+          <div className="grid grid-cols-5 gap-y-[10px] w-full">
+            {sortedData &&
+              sortedData.length > 0 &&
+              sortedData
+                .slice(0, pageSize)
+                .map((item) => (
+                  <MovieCard
+                    key={item.id}
+                    noPaddingCard
+                    onClick={getURL}
+                    data={item}
+                  ></MovieCard>
+                ))}
+          </div>
+        ) : (
+          <ListItemSkeleton total={15}></ListItemSkeleton>
+        )}
       </div>
       <div className="w-full max-h-[50px] h-[50px] flex items-end justify-center text-center">
         <Pagination

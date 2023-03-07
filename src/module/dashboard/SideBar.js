@@ -13,6 +13,8 @@ import { useSortMovie } from "hooks/useSortMovie";
 import DashboardTitle from "./DashboardTitle";
 import { selectFilm } from "utils/const";
 import { URLImageDB } from "utils/config";
+import ItemSidebar from "./ItemSidebar";
+import ListItemSidebarSkeleton from "component/loading/Skeleton/ListItemSidebarSkeleton";
 const SideBarStyles = styled.div`
   padding: 0px 0px calc(var(--padding-dashboard) - 5px) 0px;
   .item-list {
@@ -26,7 +28,7 @@ const SideBarStyles = styled.div`
   }
 `;
 const SideBar = ({ className }) => {
-  const { setSortType, sortType } = useSortMovie("popular");
+  const { setSortType, sortType, fetching } = useSortMovie("popular");
   const [listTrending, setListTrending] = React.useState([]);
   const [pageIndex, setPageIndex] = React.useState(1);
   const getDataTrending = async (page) => {
@@ -94,36 +96,19 @@ const SideBar = ({ className }) => {
       </Box>
       <SimpleBarReact style={{ maxHeight: 450 }}>
         <div className="item-list">
-          {listTrending.map((item) => {
-            const nameItem = item.original_title || item.original_name;
-            return (
-              <div
+          {!fetching &&
+            listTrending &&
+            listTrending.length > 0 &&
+            listTrending.map((trendingData) => (
+              <ItemSidebar
                 key={uuidV4()}
-                className="item-sidebar max-h-[48px] h-[45px] flex items-center cursor-pointer"
-                title={nameItem.length >= 14 ? nameItem : ""}
-              >
-                <div className="w-[40px] h-[40px] mr-[5px]">
-                  <img
-                    src={`${item.poster_path && URLImageDB + item.poster_path}`}
-                    alt=""
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-col items-start leading-5">
-                  <p className="text-[16px] font-semibold">
-                    {nameItem.length >= 14
-                      ? nameItem.slice(0, 14) + "..."
-                      : nameItem}
-                  </p>
-                  <div className="flex items-center text-[14px] text-hightLight">
-                    <span className="italic">
-                      {item.vote_average} vote_average
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                trendingData={trendingData}
+              ></ItemSidebar>
+            ))}
+
+          {fetching && (
+            <ListItemSidebarSkeleton total={20}></ListItemSidebarSkeleton>
+          )}
           <p
             className="text-borderLineBlue font-semibold cursor-pointer text-center mt-[5px]"
             onClick={handleLoadMoreTrending.current}

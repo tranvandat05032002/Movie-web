@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { InputProvider } from "context/input-context";
 import Background from "component/animated/Background";
 import SideBar from "./SideBar";
+import { useSortMovie } from "hooks/useSortMovie";
 const SearchInputStyles = styled.div`
   margin-top: var(--height-header);
   padding: 30px 40px;
