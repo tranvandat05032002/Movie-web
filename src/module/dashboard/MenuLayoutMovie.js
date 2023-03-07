@@ -6,6 +6,7 @@ import { useSortMovie } from "hooks/useSortMovie";
 import MovieCard from "module/movie/MovieCard";
 import styled from "styled-components";
 import DashboardTitle from "./DashboardTitle";
+import CardSkeleton from "component/Skeleton/CardSkeleton";
 const MenuLayoutMovieStyles = styled.div``;
 const MenuLayoutMovie = ({ title = "No title", type }) => {
   const {
@@ -15,6 +16,7 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
     totalPage,
     sortType,
     setSortType,
+    fetching,
   } = useSortMovie(`${type}`);
   const itemRender = (_, type, originalElement) => {
     switch (type) {
@@ -41,7 +43,7 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
         title="Sort Movies By"
       ></SelectMaterial>
       <div className="w-full">
-        <div className="grid grid-cols-5 gap-y-[10px] w-full">
+       {fetching ? <div className="grid grid-cols-5 gap-y-[10px] w-full">
           {sortedData &&
             sortedData.length > 0 &&
             sortedData
@@ -54,7 +56,7 @@ const MenuLayoutMovie = ({ title = "No title", type }) => {
                   data={item}
                 ></MovieCard>
               ))}
-        </div>
+        </div> : <CardSkeleton></CardSkeleton>}
       </div>
       <div className="w-full max-h-[50px] h-[50px] flex items-end justify-center text-center">
         <Pagination

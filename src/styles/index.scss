@@ -171,10 +171,10 @@ body {
   width: max-content;
 }
 
-.shadow-item{
-  box-shadow: 0px 0px 26px -7px rgba(0,0,0,0.2);
--webkit-box-shadow: 0px 0px 26px -7px rgba(0,0,0,0.2);
--moz-box-shadow: 0px 0px 26px -7px rgba(0,0,0,0.2);
+.shadow-item {
+  box-shadow: 0px 0px 26px -7px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 26px -7px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 26px -7px rgba(0, 0, 0, 0.2);
 }
 .debug-css {
   border: 1px solid red;
@@ -194,3 +194,47 @@ body {
   }
 }
 
+//Skeleton
+// .skeleton {
+//   background-color: rgb(69, 69, 69);
+//   background-image: linear-gradient(
+//     110deg,
+//     #f7f7f7 8%,
+//     #ffffff 18%,
+//     #f0f0f0 33%
+//   );
+//   background-size: 200% 100%;
+//   animation: 1.5s shine linear infinite;
+// }
+// @keyframes shine {
+//   to {
+//     background-position-x: -200%;
+//   }
+// }
+
+.loading-skeleton {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-skeleton-item {
+  background-color: #ddd;
+  margin-bottom: 10px;
+  animation: loadingSkeleton 1s ease-in-out infinite;
+}
+
+.loading-skeleton-item:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes loadingSkeleton {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
