@@ -11,6 +11,7 @@ export function useSortMovie(type) {
   const [data, setData] = React.useState();
   const [pageIndex, setPageIndex] = React.useState(1);
   const [sortType, setSortType] = React.useState("");
+  const [fetching, setFetching] = React.useState(true);
   // function localeCompareCustom(a, b) {
   //   if (a < b) {
   //     return -1;
@@ -79,6 +80,7 @@ export function useSortMovie(type) {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
     const fetSearchData = async () => {
+      setFetching(true);
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&page=${pageIndex}
@@ -86,10 +88,12 @@ export function useSortMovie(type) {
           { cancelToken: source.token }
         );
         if (response.data?.results) {
+          setFetching(false);
           setMovieList(response.data?.results);
           setData(response?.data);
         }
       } catch (error) {
+        setFetching(true);
         console.log(error.message);
       }
     };
@@ -127,5 +131,6 @@ export function useSortMovie(type) {
     setPageIndex,
     pageIndex,
     totalPage,
+    fetching
   };
 }

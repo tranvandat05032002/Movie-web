@@ -15,7 +15,7 @@ const SearchPageStyled = styled.div`
 
 const SearchPage = () => {
   return (
-    <SearchPageStyled className="debug-css">
+    <SearchPageStyled>
       <SearchSidebar></SearchSidebar>
       <Outlet></Outlet>
     </SearchPageStyled>

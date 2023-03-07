@@ -36,7 +36,8 @@ const HomeBanner = () => {
   return (
     <BannerStyles>
       <div
-        className="flex w-full h-full px-[40px] py-[30px] flex-wrap flex-col items-start"
+        // className="flex w-full h-full px-[40px] py-[30px] flex-wrap flex-col items-start"
+        className="flex w-full h-full px-[40px] py-[30px] flex-wrap flex-col justify-center"
         id="banner"
       >
         <div className="mb-[30px] w-full">
@@ -47,7 +48,7 @@ const HomeBanner = () => {
             Millions of movies, TV shows and people to discover. Explore now.
           </p>
         </div>
-        <div className="relative flex w-full">
+        {/* <div className="relative flex w-full">
           <input
             type="text"
             placeholder="Search for a movie, tv show, person......"
@@ -56,7 +57,7 @@ const HomeBanner = () => {
           <ButtonStyles type="button" className="">
             Search
           </ButtonStyles>
-        </div>
+        </div> */}
       </div>
     </BannerStyles>
   );

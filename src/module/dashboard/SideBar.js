@@ -59,23 +59,15 @@ const SideBar = ({ className }) => {
   React.useEffect(() => {
     handleLoadMoreTrending.current();
   }, [handleLoadMoreTrending]);
-  // console.log(listTrending);
-  const sortTrending = [];
-  listTrending.forEach((item) => {
-    // sortTrending.push(item?.original_title.slice(0, 2));
-    // console.log(item?.original_title?.slice(0, 2));
-    if (item?.original_title || item?.original_name) {
-      sortTrending.push(
-        item?.original_title?.slice(0, 1).toUpperCase() ||
-          item?.original_name?.slice(0, 1).toUpperCase()
-      );
-    }
-  });
-  // const quickSort = (arr) => {
-  //   if (arr.length < 2) return;
-  //   const pivotIndex = arr.length - 1;
-  //   const povot = arr[pivotIndex];
-  // };
+  if (sortType === "Title(A-Z)") {
+    listTrending.sort((a, b) =>
+      (a.original_name || a.original_title) >
+      (b.original_name || b.original_title)
+        ? 1
+        : -1
+    );
+  }
+  console.log(listTrending);
   return (
     <SideBarStyles
       className={`text-black w-[240px] min-w-[240px] text-start ${className}`}
@@ -106,7 +98,7 @@ const SideBar = ({ className }) => {
             const nameItem = item.original_title || item.original_name;
             return (
               <div
-                key={item.id}
+                key={uuidV4()}
                 className="item-sidebar max-h-[48px] h-[45px] flex items-center cursor-pointer"
                 title={nameItem.length >= 14 ? nameItem : ""}
               >
