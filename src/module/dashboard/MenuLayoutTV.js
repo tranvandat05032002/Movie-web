@@ -1,4 +1,5 @@
 import { Pagination } from "antd";
+import ListItemSkeleton from "component/loading/Skeleton/ListItemSkeleton";
 import SelectMaterial from "component/materialUI/SelectMaterial";
 import { useNavigation } from "hooks/useNavigation";
 import { useSortTV } from "hooks/useSortTV";
@@ -18,6 +19,7 @@ const MenuLayoutTV = ({ title = "No title", type }) => {
     totalPage,
     sortType,
     setSortType,
+    fetchingTV
   } = useSortTV(`${type}`);
   const { getURL } = useNavigation();
   const [pageSize, setPageSize] = React.useState(20);
@@ -44,7 +46,7 @@ const MenuLayoutTV = ({ title = "No title", type }) => {
         title="Sort Movies By"
       ></SelectMaterial>
       <div className="w-full">
-        <div className="grid grid-cols-5 gap-y-[10px] w-full">
+        { !fetchingTV ? <div className="grid grid-cols-5 gap-y-[10px] w-full">
           {sortedData &&
             sortedData.length >= 0 &&
             sortedData
@@ -59,6 +61,9 @@ const MenuLayoutTV = ({ title = "No title", type }) => {
                 ></MovieCard>
               ))}
         </div>
+        : 
+        <ListItemSkeleton total={15}></ListItemSkeleton>
+        }
       </div>
       <div className="w-full max-h-[50px] h-[50px] flex items-end justify-center text-center">
         <Pagination

@@ -11,6 +11,7 @@ export function useSortTV(type) {
   const [data, setData] = React.useState();
   const [pageIndex, setPageIndex] = React.useState(1);
   const [sortType, setSortType] = React.useState("");
+  const [fetchingTV, setFetchingTV] = React.useState(true);
   const sortedData = React.useMemo(() => {
     let resultsData = movieList;
     if (sortType === "TitleDescending") {
@@ -55,16 +56,19 @@ export function useSortTV(type) {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
     const fetSearchData = async () => {
+      setFetchingTV(true);
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&page=${pageIndex}`,
           { cancelToken: source.token }
         );
         if (response.data?.results) {
+          setFetchingTV(false);
           setMovieList(response.data?.results);
           setData(response?.data);
         }
       } catch (error) {
+        setFetchingTV(false);
         console.log(error.message);
       }
     };
@@ -102,5 +106,6 @@ export function useSortTV(type) {
     setPageIndex,
     pageIndex,
     totalPage,
+    fetchingTV,
   };
 }
