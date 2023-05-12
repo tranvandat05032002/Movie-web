@@ -26,7 +26,11 @@ const Footer = () => {
       <div className="flex justify-center w-full h-full">
         <div className="h-full w-[150px]">
           <NavLink to="/" className="w-[150px] h-[50px]">
-            <img src="/logo.svg" className="w-full h-[50px] " alt="" />
+            <img
+              src="../../../public/Logo.svg"
+              className="w-full h-[50px] "
+              alt=""
+            />
           </NavLink>
         </div>
         <div className="flex max-w-[480px] w-full justify-between mx-[30px]">
