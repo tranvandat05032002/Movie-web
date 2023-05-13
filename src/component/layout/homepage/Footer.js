@@ -1,3 +1,4 @@
+import LogoIcon from "component/icon/LogoIcon";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -26,11 +27,13 @@ const Footer = () => {
       <div className="flex justify-center w-full h-full">
         <div className="h-full w-[150px]">
           <NavLink to="/" className="w-[150px] h-[50px]">
-            <img
-              src="../../../public/Logo.svg"
-              className="w-full h-[50px] "
-              alt=""
-            />
+            {/* <img src="/logo.png" className="w-full h-[50px] " alt="" />
+            <LogoIcon></LogoIcon> */}
+            <div className="flex flex-col items-center justify-between w-full h-full">
+              {" "}
+              <LogoIcon width={51} height={86}></LogoIcon>
+              <span>TRANVANDAT</span>
+            </div>
           </NavLink>
         </div>
         <div className="flex max-w-[480px] w-full justify-between mx-[30px]">

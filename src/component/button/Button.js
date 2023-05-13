@@ -1,3 +1,5 @@
+import { FacebookIcon } from "component/icon/FacebookIcon";
+import { GoogleIcon } from "component/icon/GoogleIcon";
 import LoadingSniper from "component/loading/LoadingSniper";
 import React from "react";
 import styled, { css } from "styled-components";
@@ -77,21 +79,15 @@ const Button = ({
   const child = !!isLoading ? <LoadingSniper></LoadingSniper> : children;
   let ButtonElement = "div";
   Navigation ? (ButtonElement = "NavLink") : (ButtonElement = "div");
+  const iconClassName =
+    "max-w-[25px] max-h-[25px] absolute left-[65px] top-[10px]";
   return (
     <div className="relative">
       {kind === "buttonFacebook" && (
-        <img
-          src="/facebook.svg"
-          className=" max-w-[25px] max-h-[25px] absolute left-[65px] top-[10px]"
-          alt=""
-        />
+        <FacebookIcon className={iconClassName}></FacebookIcon>
       )}
       {kind === "buttonGmail" && (
-        <img
-          src="/google.svg"
-          className=" max-w-[25px] max-h-[25px] absolute left-[65px] top-[10px]"
-          alt=""
-        />
+        <GoogleIcon className={iconClassName}></GoogleIcon>
       )}
       <ButtonElement>
         <ButtonStyles

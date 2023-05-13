@@ -19,6 +19,7 @@ import SearchInput from "module/dashboard/SearchInput";
 import TippyLayout from "component/Tippy/TippyLayout";
 import { CloseIconSVG } from "component/icon/SVG";
 import { SearchContext } from "context/search-context";
+import LogoIcon from "component/icon/LogoIcon";
 const HeaderStyles = styled.header`
   position: fixed;
   width: 100%;
@@ -51,7 +52,7 @@ const Header = ({ hideOnClick = false, visible }) => {
       navigate("/sign-up");
     }
   };
-  const {toggleSearch, setToggleSearch} = React.useContext(SearchContext)
+  const { toggleSearch, setToggleSearch } = React.useContext(SearchContext);
   const toggleShowSearch = () => {
     setToggleSearch(!toggleSearch);
   };
@@ -63,8 +64,12 @@ const Header = ({ hideOnClick = false, visible }) => {
     >
       <div className="container flex items-center justify-between w-full p-[34px]  max-h-3">
         <div className="flex items-center justify-around  flex-nowrap max-w-[500px] w-[500px]">
-          <NavLink to="/" className="w-[150px] h-[50px]">
-            <img src="/logo.svg" className="w-full h-full " alt="" />
+          <NavLink to="/" className="w-[153px] h-[50px]">
+            <div className="flex items-center justify-between w-full h-full">
+              {" "}
+              <LogoIcon width={41} height={76}></LogoIcon>
+              <span>TRANVANDAT</span>
+            </div>
           </NavLink>
 
           {dataCategory.length > 0 &&
